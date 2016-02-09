@@ -21,7 +21,7 @@
   },
   "overrides": {
     "semantic": {
-      "main": ["dist/semantic.css","dist/semantic.js"]
+      "main": ["dist/components/ad.css","dist/components/button.css","dist/semantic.js"]
     }
   }
 }
