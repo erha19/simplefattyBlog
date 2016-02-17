@@ -1,4 +1,9 @@
-$link-color:red;
-a{
-	color:$link-color;
-}
+
+@import "./base.scss";
+
+@import "./markdown.scss";
+
+@import "./components/banner/banner.scss";
+
+@import "./components/loading/loading.scss";
+

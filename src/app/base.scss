@@ -1,0 +1,229 @@
+@import "compass/css3";
+@import "compass/utilities/sprites";
+$sort-spacing: 20px;
+$sort-layout: vertical;
+@import "icon/*.png";
+@include all-icon-sprites;
+/**
+ * base
+ */
+$basebodyBgColor:#f8f8f8;
+$basebodyColor:#333;
+
+$baseFontFamily:"Microsoft YaHei", "SimHei", "Arial Unicode MS";
+$baseBgColor:white;
+/**
+ * logo-size
+ */
+$logoHeight:100px;
+$logoWidth:100px;
+$logoPhoneSize:60px;
+/**
+ * navbar
+ */
+
+$navbarBorderColor:rgba(0,0,0,.13);
+$navbarHeight:60px;
+$navbarPhoneHeight:50px;
+
+
+$navbarSize:16px;
+$navBgColor: white;
+
+$navbarDefaultColor:#666565;
+$navHoverBgColor: #009688;
+$navActiveColor:#009688;
+
+/**
+ * container
+ */
+$containerBgColor:#fefdfd;
+$containerBorderColor:rgba(0,0,0,.1);
+
+body{
+	margin:0;
+	padding:0;
+	font-family:$baseFontFamily;
+	color:$basebodyColor;
+	background-color:$basebodyBgColor;
+	overflow-y: scroll;
+    overflow-x: hidden;
+}
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width:10px;
+}
+            
+/* Track */
+::-webkit-scrollbar-track {
+
+}
+            
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background:$navActiveColor;             
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: $navActiveColor;             
+}
+/**
+ * header-style
+ */
+.sf_navbar{
+	height:$navbarHeight;
+	width:100%;
+	background-color:$baseBgColor;
+	position:relative;
+	margin:0;
+	padding:0;
+	border-bottom:1px solid $navbarBorderColor;
+	@media screen and (max-width: 480px){
+		height:50px;
+	}
+	.container{
+		position:relative;
+	}
+}
+.sf_logo{
+	width:$logoWidth;
+	height:$logoHeight;
+	position:absolute;
+	top:10px;
+	left:20px;
+	border-radius:50px;
+	border:1px solid $navbarBorderColor;
+	overflow:hidden;
+	z-index:99;
+	@media screen and (max-width: 480px){
+		width: $logoPhoneSize;
+		height: $logoPhoneSize;
+	}
+	img{
+		width: 100px;
+		height: auto;
+		display: block;
+		@media screen and (max-width: 480px){
+			width: $logoPhoneSize;
+			height: $logoPhoneSize;
+		}
+	}
+}
+.sf_nav{
+	width:auto;
+	height:$navbarHeight;
+	margin:0;
+	padding:0;
+	@media screen and (max-width: 480px){
+		height:$navbarPhoneHeight                  ;
+	}
+	li{
+		height: $navbarHeight;
+		line-height: $navbarHeight;
+		font-size: $navbarSize;
+		list-style: none;
+		float: left;
+		padding:0 25px;
+		color:$navbarDefaultColor;
+		position:relative;
+		cursor:pointer;
+		transition: all .2s ease;
+		@media screen and (max-width: 480px){
+			height:$navbarPhoneHeight                  ;
+			line-height: $navbarPhoneHeight                  ;
+			padding:0 20px;
+		}
+		&.active{
+			color: $navActiveColor;
+		}
+		&:hover{
+			color:$navHoverBgColor;
+		}
+		&:before{
+			content: '/';
+			position:absolute;
+			left: 0;
+			color:$navbarDefaultColor;
+		}
+	}
+	&>li:first-child:before{
+		content:'';
+	}
+}
+/**
+ * container
+ */
+.sf_container{
+	background-color:$containerBgColor;
+}
+.sf_artical_item{
+	margin-top:20px;
+	margin-bottom:20px;
+	padding:10px;
+	border:1px solid $containerBorderColor;
+	@media screen and (max-width: 480px){
+		border-width:0;
+	}
+	h1{
+		display: block;
+		width: 100%;
+		font-size: 20px;
+		cursor: pointer;
+		&:hover{
+			span,i{
+				opacity: 1;
+			}
+		}
+	}
+	
+	span,i{
+		display: inline-block;
+		font-size:16px;
+		font-style: normal;
+		padding-left:20px;
+		background-repeat:no-repeat;
+		background-attachment:center;
+		height: 14px;
+		margin:5px;
+		opacity: 0;
+		transition: all .2s ease;
+	}
+	p{
+		line-height: 25px;
+	}
+	.artical_tag{
+		height: 30px;
+		width: 100%;
+		.tag,.time{
+			float: left;
+			display: inline-block;
+			font-size:16px;
+			font-style: normal;
+			padding-left:20px;
+			background-repeat:no-repeat;
+			background-attachment:center;
+			height: 16px;
+			line-height: 16px;
+			margin:5px;
+		}
+	}
+}
+/**
+ * markdown
+ */
+.sf_artical_content{
+	padding:50px 0;
+	background-color:$baseBgColor;
+	@media screen and (max-width: 480px){
+		padding:20px 0;
+	}
+}
+/**
+ * footer
+ */
+.sf_footer{
+	width:100%;
+	height:30px;
+	margin:15px 0;
+	line-height:30px;
+	text-align:center;
+}

@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 
 gulp.task('dev-config',function () {
   return gulp.src('app.conf.json')
-        .pipe($.ngConfig('sfBlog',{
+        .pipe($.ngConfig('sf_blog',{
           environment: 'development',
           createModule: false,
           wrap: true
@@ -101,7 +101,6 @@ gulp.task('inject', ['jshint', 'styles:compass'], function () {
   ], { read: false });
 
   var injectScripts = gulp.src([
-    path.join(config.paths.src, '/app/**/*.module.js'),
     path.join(config.paths.src, '/app/**/*.js'),
     path.join('!' + config.paths.src, '/app/**/*.spec.js'),
     path.join('!' + config.paths.src, '/app/**/*.mock.js')

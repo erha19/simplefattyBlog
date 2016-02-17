@@ -1,0 +1,20 @@
+    <sf-banner></sf-banner>
+    <div class="container sf_container">
+        <div class="row" data-ng-repeat="blog in blogList">
+            <div class="col-sm-offset-1 col-sm-10 sf_artical_item">
+                <img ng-src="{{::blog.images[0]}}" class="img-responsive" alt="Responsive image">    
+                <h1>
+                    {{::blog.title}}
+                    <span class="icon-read">{{::blog.visit_count}}</span> <i class="icon-talk">{{::blog.comment_count}}</i>
+                </h1>
+                <div class="artical_tag">
+                    <div class="tag icon-tag" data-ng-bind="::blog.tagName"></div>
+                    <div class="time icon-time" data-ng-bind="::blog.publish_time"></div>
+                </div>
+                <p data-ng-bind="::blog.introduce">
+                    
+                </p>
+            </div>
+        </div>
+        <sf-loading class='loading' ng-show='isLoading'></sf-loading>  
+    </div>

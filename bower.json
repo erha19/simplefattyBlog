@@ -17,11 +17,36 @@
     "tests"
   ],
   "dependencies": {
-    "semantic": "semantic-ui#~2.1.8"
+    "bootstrap": "~3.3.6",
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18",
+    "angular-sanitize": "^1.5.0",
+    "angular-touch": "^1.5.0",
+    "angular-resource": "^1.5.0"
   },
   "overrides": {
-    "semantic": {
-      "main": ["dist/components/ad.css","dist/components/button.css","dist/semantic.js"]
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.min.css"
+      ]
+    },
+    "angular": {
+      "main": [
+        "angular.js"
+      ]
+    },
+    "angular-ui-router": {
+      "main": [
+        "release/angular-ui-router.js"
+      ]
+    },
+    "angular-sanitize": {
+      "main": [
+        "angular-sanitize.js"
+      ]
+    },
+    "jquery": {
+      "main": []
     }
   }
 }
