@@ -4,6 +4,9 @@
     "IsDebug":true,
     "CookieConfig":{
       "domain":""
+    },
+    "EVENT":{
+      "NeedToLoad":"need-to-load"
     }
   },
   "production": {

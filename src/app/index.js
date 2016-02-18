@@ -4,6 +4,8 @@
 	angular.module('sf_blog',[
 		'ui.router',
 		'ngTouch',
+		'ngSanitize',
+		'sf_blog.article',
 		'sf_blog.resources',
 		'sf_blog.service'
 	])

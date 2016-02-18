@@ -2,8 +2,8 @@
     <div class="container sf_container">
         <div class="row" data-ng-repeat="blog in blogList">
             <div class="col-sm-offset-1 col-sm-10 sf_artical_item">
-                <img ng-src="{{::blog.images[0]}}" class="img-responsive" alt="Responsive image">    
-                <h1>
+                <img ng-src="{{::blog.image}}" class="img-responsive" alt="Responsive image">    
+                <h1 ui-sref="article({aid:blog._id})">
                     {{::blog.title}}
                     <span class="icon-read">{{::blog.visit_count}}</span> <i class="icon-talk">{{::blog.comment_count}}</i>
                 </h1>
@@ -16,5 +16,5 @@
                 </p>
             </div>
         </div>
-        <sf-loading class='loading' ng-show='isLoading'></sf-loading>  
+        <sf-loading class='loading' ng-show='isLoading' load-more=''></sf-loading>  
     </div>
