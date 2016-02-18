@@ -10,10 +10,10 @@
     }
   },
   "production": {
-    "ServerUrl": "http://api.jackhu.top",
+    "ServerUrl": "http://api.simplefatty.cn",
     "IsDebug":false,
     "CookieConfig":{
-      "domain":".jackhu.top"
+      "domain":"sf_blog"
     },
     "EVENT":{
       "NeedToLoad":"need-to-load"

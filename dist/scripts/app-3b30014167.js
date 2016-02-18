@@ -583,9 +583,9 @@ angular.module('sf_blog.article')
 
 (function () { 
  return angular.module('sf_blog')
-.constant('ServerUrl', "http://api.jackhu.top")
+.constant('ServerUrl', "http://api.simplefatty.cn")
 .constant('IsDebug', false)
-.constant('CookieConfig', {"domain":".jackhu.top"})
+.constant('CookieConfig', {"domain":"sf_blog"})
 .constant('EVENT', {"NeedToLoad":"need-to-load"});
 
 })();
