@@ -10,7 +10,7 @@
     }
   },
   "production": {
-    "ServerUrl": "http://api.simplefatty.cn",
+    "ServerUrl": "http://simplefatty.cn",
     "IsDebug":false,
     "CookieConfig":{
       "domain":"sf_blog"
