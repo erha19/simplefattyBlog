@@ -14,6 +14,9 @@
     "IsDebug":false,
     "CookieConfig":{
       "domain":".jackhu.top"
+    },
+    "EVENT":{
+      "NeedToLoad":"need-to-load"
     }
   },
   "test": {
