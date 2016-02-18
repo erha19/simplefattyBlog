@@ -8,7 +8,9 @@ var wiredep = require('wiredep').stream;
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del','imagemin-pngquant']
 });
-
+gulp.task('clean:dist', function () {
+  $.del([path.join(config.paths.dist, '/')]);
+});
 /*****************angular模板合成JS start*********************************************/
 //https://github.com/murphydanger/gulp-minify-html
 //只有在build的时候才需要
@@ -22,7 +24,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'jackblog',
+      module: 'sf_blog',
       root: 'app'
     }))
     .pipe(gulp.dest(config.paths.tmp + '/partials/'));
@@ -45,14 +47,13 @@ gulp.task('html',['inject','partials'],function () {
 	return gulp.src(path.join(config.paths.tmp, '/serve/*.html'))
 		//自动处理全部错误信息防止因为错误而导致 watch 不正常工作
 		.pipe($.plumber(config.errorHandler()))
-		.pipe($.useref())
 		//注入angular模板文件
 		.pipe($.inject(partialsInjectFile,partialsInjectOptions))
 		//js处理
+		.pipe($.useref())
 		.pipe(jsFilter)
-		.pipe($.ngAnnotate())
 		//.pipe($.uglify({ preserveComments: $.uglifySaveLicense }))
-		.pipe($.uglify())
+		// .pipe($.uglify())
 		.pipe(jsFilter.restore)
 		//css处理
 		.pipe(cssFilter)
@@ -78,7 +79,11 @@ gulp.task('html',['inject','partials'],function () {
 });
 /*****************html end*********************/
 
-
+gulp.task('renameIndex',function(){
+	return gulp.src([path.join(config.paths.dist,'/*.html')])
+		   .pipe($.rename('index.html'))
+		   .pipe(gulp.dest(config.paths.dist))
+})
 /**
  * images zip
  */
@@ -112,5 +117,5 @@ gulp.task('other',function () {
 });
 
 
-gulp.task('build',$.sequence('prod-config',['html'],['images'],'other'));
-gulp.task('build:e2e',$.sequence('test-config',['html'],['images'],'other'));
+gulp.task('build',$.sequence('prod-config',['clean:dist','html'],['images','renameIndex'],'other'));
+gulp.task('build:e2e',$.sequence('test-config',['clean:dist','html'],['images','renameIndex'],'other'));

@@ -24,7 +24,7 @@ gulp.task('dev-config',function () {
 });
 gulp.task('prod-config',function () {
   return gulp.src('app.conf.json')
-        .pipe($.ngConfig('sfBlog',{
+        .pipe($.ngConfig('sf_blog',{
           environment: 'production',
           createModule: false,
           wrap: true

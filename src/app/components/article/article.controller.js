@@ -27,4 +27,4 @@ angular.module('sf_blog.article')
 
 
     }])
-})()
+})();

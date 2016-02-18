@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('sf_blog')
-        .config(function($stateProvider) {
+        .config(['$stateProvider',function($stateProvider) {
             $stateProvider
                 .state('home', {
                     url: '/',
@@ -9,7 +9,7 @@
                     controller: 'MainController',
                     controllerAs: 'main'
                 });
-        })
+        }])
         .controller('MainController', ['$scope', '$timeout', 'Blog', 'Tags', 'EVENT', function($scope, $timeout, Blog, Tags, EVENT) {
 
             var tagListName = {},
@@ -79,4 +79,4 @@
                 }
             })
         }])
-})()
+})();
