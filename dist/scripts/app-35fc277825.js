@@ -583,7 +583,7 @@ angular.module('sf_blog.article')
 
 (function () { 
  return angular.module('sf_blog')
-.constant('ServerUrl', "http://simplefatty.cn")
+.constant('ServerUrl', "/api")
 .constant('IsDebug', false)
 .constant('CookieConfig', {"domain":"sf_blog"})
 .constant('EVENT', {"NeedToLoad":"need-to-load"});
@@ -591,8 +591,8 @@ angular.module('sf_blog.article')
 })();
 
 angular.module("sf_blog").run(["$templateCache", function($templateCache) {$templateCache.put("app/components/article/article.html","<div class=\"sf_artical_content clearfix\"><div class=\"markdown col-sm-offset-2 col-sm-8\" data-ng-bind-html=\"::article.content\"></div></div>");
-$templateCache.put("app/components/banner/banner.html","<div class=\"sf_banner\"><h1><span class=\"logo-tag\">&lt;</span><tag-content></tag-content><span class=\"text-cursor\">|</span> <span class=\"logo-tag\">/&gt;</span></h1><h2>Simplefatty</h2></div>");
 $templateCache.put("app/components/footer/footer.html","<div class=\"sf_footer\">Super-powered by Simplefatty ©2015-2016 粤ICP备16009462号</div>");
+$templateCache.put("app/components/banner/banner.html","<div class=\"sf_banner\"><h1><span class=\"logo-tag\">&lt;</span><tag-content></tag-content><span class=\"text-cursor\">|</span> <span class=\"logo-tag\">/&gt;</span></h1><h2>Simplefatty</h2></div>");
 $templateCache.put("app/components/loading/loading.html","<div class=\"ball\"></div><div class=\"ball\"></div><div class=\"ball\"></div><div class=\"ball_block\"></div>");
 $templateCache.put("app/components/main/main.html","<sf-banner></sf-banner><div class=\"container sf_container\"><div class=\"row\" data-ng-repeat=\"blog in blogList\"><div class=\"col-sm-offset-1 col-sm-10 sf_artical_item\"><img ng-src=\"{{::blog.image}}\" class=\"img-responsive\" alt=\"Responsive image\"><h1 ui-sref=\"article({aid:blog._id})\">{{::blog.title}} <span class=\"icon-read\">{{::blog.visit_count}}</span> <i class=\"icon-talk\">{{::blog.comment_count}}</i></h1><div class=\"artical_tag\"><div class=\"tag icon-tag\" data-ng-bind=\"::blog.tagName\"></div><div class=\"time icon-time\" data-ng-bind=\"::blog.publish_time\"></div></div><p data-ng-bind=\"::blog.introduce\"></p></div></div><sf-loading class=\"loading\" ng-show=\"isLoading\" load-more=\"\"></sf-loading></div>");
 $templateCache.put("app/components/navbar/navbar.html","<div class=\"sf_navbar\"><div class=\"container clearfix\"><a href=\"\" class=\"sf_logo\"><img src=\"../assets/images/user_ic.png\" alt=\"\"></a><ul class=\"sf_nav pull-right\"><li ui-sref-active=\"active\"><a ui-sref=\"home\">首页</a></li><li>实验室</li></ul></div></div>");}]);

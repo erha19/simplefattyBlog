@@ -1,6 +1,6 @@
 {
   "development": {
-    "ServerUrl": "http://localhost:9000/api",
+    "ServerUrl": "/api",
     "IsDebug":true,
     "CookieConfig":{
       "domain":""
@@ -10,7 +10,7 @@
     }
   },
   "production": {
-    "ServerUrl": "http://simplefatty.cn",
+    "ServerUrl": "/api",
     "IsDebug":false,
     "CookieConfig":{
       "domain":"sf_blog"
