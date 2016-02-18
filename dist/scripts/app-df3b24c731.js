@@ -590,7 +590,7 @@ angular.module('sf_blog.article')
 
 })();
 
-angular.module("sf_blog").run(["$templateCache", function($templateCache) {$templateCache.put("app/components/article/article.html","<div class=\"sf_artical_content clearfix\"><div class=\"markdown col-sm-offset-1 col-sm-10\" data-ng-bind-html=\"::article.content\"></div></div>");
+angular.module("sf_blog").run(["$templateCache", function($templateCache) {$templateCache.put("app/components/article/article.html","<div class=\"sf_artical_content clearfix\"><div class=\"markdown col-sm-offset-2 col-sm-8\" data-ng-bind-html=\"::article.content\"></div></div>");
 $templateCache.put("app/components/banner/banner.html","<div class=\"sf_banner\"><h1><span class=\"logo-tag\">&lt;</span><tag-content></tag-content><span class=\"text-cursor\">|</span> <span class=\"logo-tag\">/&gt;</span></h1><h2>Simplefatty</h2></div>");
 $templateCache.put("app/components/footer/footer.html","<div class=\"sf_footer\">Super-powered by Simplefatty ©2015-2016 粤ICP备16009462号</div>");
 $templateCache.put("app/components/loading/loading.html","<div class=\"ball\"></div><div class=\"ball\"></div><div class=\"ball\"></div><div class=\"ball_block\"></div>");
