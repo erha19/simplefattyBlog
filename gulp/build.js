@@ -52,6 +52,7 @@ gulp.task('html',['inject','partials'],function () {
 		//js处理
 		.pipe($.useref())
 		.pipe(jsFilter)
+		.pipe($.ngAnnotate())
 		//.pipe($.uglify({ preserveComments: $.uglifySaveLicense }))
 		.pipe($.uglify())
 		.pipe(jsFilter.restore)

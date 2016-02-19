@@ -9,7 +9,7 @@
 		'sf_blog.resources',
 		'sf_blog.service'
 	])
-	.config(function ($logProvider,$stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, IsDebug) {
+	.config(['$logProvider','$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 'IsDebug',function ($logProvider,$stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, IsDebug) {
 	  $locationProvider.html5Mode(true);
 	  $httpProvider.defaults.timeout = 500000;
 	  $httpProvider.defaults.withCredentials = true;
@@ -17,5 +17,5 @@
 	  // Enable log
 	  $logProvider.debugEnabled(IsDebug);
 	  $urlRouterProvider.otherwise('/');
-	})
+	}])
 })();
