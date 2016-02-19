@@ -50,7 +50,7 @@
 (function() {
     'use strict';
     angular.module('sf_blog')
-        .config(['$stateProvider',function($stateProvider) {
+        .config(['$stateProvider', function($stateProvider) {
             $stateProvider
                 .state('home', {
                     url: '/',
@@ -63,14 +63,19 @@
 
             var tagListName = {},
                 tagArray = [];
-            var browser = {
-                versions: function() {
-                    var u = navigator.userAgent;
-                    return { 
-                        mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/)  
-                    };
-                }(),
-            }
+
+            var ispc=(function() {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            })();
             $scope.isLoading = true;
             Tags.getFrontTagList().then(function(result) {
                 for (var i in result.data) {
@@ -100,11 +105,10 @@
                         for (var k in result.data[j].tags) {
                             tagArray.push(tagListName[result.data[j].tags[k]])
                         }
-                        console.log(browser.versions.mobile)
-                        if(browser.versions.mobile)
-                            result.data[j].image=result.data[j].images[0]
+                        if (ispc)
+                            result.data[j].image = result.data[j].images[0]
                         else
-                            result.data[j].image=result.data[j].images[1]
+                            result.data[j].image = result.data[j].images[1]
                         result.data[j]['tagName'] = tagArray.join(',');
                     }
                     $timeout(function() {
@@ -248,6 +252,34 @@ angular.module('sf_blog.article')
 
 
     }])
+})();
+(function() {
+	'use strict';
+
+	angular.module('sf_blog.service',[])
+})();
+(function() {
+	'use strict';
+
+	angular.module('sf_blog.service')
+		.factory('AuthInterceptor', function($rootScope, $q, $location, $injector) {
+			var Auth;
+			return {
+				// request: function(config) {
+				// 	config.headers = config.headers || {};
+				// 	if ($cookies.get('token')) {
+				// 		config.headers.Authorization = 'Bearer ' + $cookies.get('token').replace(/(^\")|(\"$)/g, "");
+				// 	}
+				// 	return config;
+				// },
+				// response: function(response) {
+				// 	return response;
+				// },
+				// responseError: function(rejection) {
+				// 	return rejection;
+				// }
+			};
+		});
 })();
 (function () {
 	'use strict';
@@ -553,34 +585,6 @@ angular.module('sf_blog.article')
 })();
 
 
-(function() {
-	'use strict';
-
-	angular.module('sf_blog.service',[])
-})();
-(function() {
-	'use strict';
-
-	angular.module('sf_blog.service')
-		.factory('AuthInterceptor', function($rootScope, $q, $location, $injector) {
-			var Auth;
-			return {
-				// request: function(config) {
-				// 	config.headers = config.headers || {};
-				// 	if ($cookies.get('token')) {
-				// 		config.headers.Authorization = 'Bearer ' + $cookies.get('token').replace(/(^\")|(\"$)/g, "");
-				// 	}
-				// 	return config;
-				// },
-				// response: function(response) {
-				// 	return response;
-				// },
-				// responseError: function(rejection) {
-				// 	return rejection;
-				// }
-			};
-		});
-})();
 (function () { 
  return angular.module('sf_blog')
 .constant('ServerUrl', "/api")
@@ -590,8 +594,8 @@ angular.module('sf_blog.article')
 
 })();
 
-angular.module("sf_blog").run(["$templateCache", function($templateCache) {$templateCache.put("app/components/article/article.html","<div class=\"sf_artical_content clearfix\"><div class=\"markdown col-sm-offset-2 col-sm-8\" data-ng-bind-html=\"::article.content\"></div></div>");
-$templateCache.put("app/components/banner/banner.html","<div class=\"sf_banner\"><h1><span class=\"logo-tag\">&lt;</span><tag-content></tag-content><span class=\"text-cursor\">|</span> <span class=\"logo-tag\">/&gt;</span></h1><h2>Simplefatty</h2></div>");
+angular.module("sf_blog").run(["$templateCache", function($templateCache) {$templateCache.put("app/components/banner/banner.html","<div class=\"sf_banner\"><h1><span class=\"logo-tag\">&lt;</span><tag-content></tag-content><span class=\"text-cursor\">|</span> <span class=\"logo-tag\">/&gt;</span></h1><h2>Simplefatty</h2></div>");
+$templateCache.put("app/components/article/article.html","<div class=\"sf_artical_content clearfix\"><div class=\"markdown col-sm-offset-2 col-sm-8\" data-ng-bind-html=\"::article.content\"></div></div>");
 $templateCache.put("app/components/footer/footer.html","<div class=\"sf_footer\">Super-powered by Simplefatty ©2015-2016 粤ICP备16009462号</div>");
 $templateCache.put("app/components/loading/loading.html","<div class=\"ball\"></div><div class=\"ball\"></div><div class=\"ball\"></div>");
 $templateCache.put("app/components/main/main.html","<sf-banner></sf-banner><div class=\"container sf_container\"><div class=\"row\" data-ng-repeat=\"blog in blogList\"><div class=\"col-sm-offset-1 col-sm-10 sf_artical_item\"><img ng-src=\"{{::blog.image}}\" class=\"img-responsive\" alt=\"Responsive image\"><h1 ui-sref=\"article({aid:blog._id})\">{{::blog.title}} <span class=\"icon-read\">{{::blog.visit_count}}</span> <i class=\"icon-talk\">{{::blog.comment_count}}</i></h1><div class=\"artical_tag\"><div class=\"tag icon-tag\" data-ng-bind=\"::blog.tagName\"></div><div class=\"time icon-time\" data-ng-bind=\"::blog.publish_time\"></div></div><p data-ng-bind=\"::blog.introduce\"></p></div></div><sf-loading class=\"loading\" ng-show=\"isLoading\" load-more=\"\"></sf-loading></div>");

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('sf_blog')
-        .config(['$stateProvider',function($stateProvider) {
+        .config(['$stateProvider', function($stateProvider) {
             $stateProvider
                 .state('home', {
                     url: '/',
@@ -14,14 +14,19 @@
 
             var tagListName = {},
                 tagArray = [];
-            var browser = {
-                versions: function() {
-                    var u = navigator.userAgent;
-                    return { 
-                        mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/)  
-                    };
-                }(),
-            }
+
+            var ispc=(function() {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            })();
             $scope.isLoading = true;
             Tags.getFrontTagList().then(function(result) {
                 for (var i in result.data) {
@@ -51,11 +56,10 @@
                         for (var k in result.data[j].tags) {
                             tagArray.push(tagListName[result.data[j].tags[k]])
                         }
-                        console.log(browser.versions.mobile)
-                        if(browser.versions.mobile)
-                            result.data[j].image=result.data[j].images[0]
+                        if (ispc)
+                            result.data[j].image = result.data[j].images[0]
                         else
-                            result.data[j].image=result.data[j].images[1]
+                            result.data[j].image = result.data[j].images[1]
                         result.data[j]['tagName'] = tagArray.join(',');
                     }
                     $timeout(function() {
