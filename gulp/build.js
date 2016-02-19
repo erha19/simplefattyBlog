@@ -53,7 +53,7 @@ gulp.task('html',['inject','partials'],function () {
 		.pipe($.useref())
 		.pipe(jsFilter)
 		//.pipe($.uglify({ preserveComments: $.uglifySaveLicense }))
-		// .pipe($.uglify())
+		.pipe($.uglify())
 		.pipe(jsFilter.restore)
 		//css处理
 		.pipe(cssFilter)
