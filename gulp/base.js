@@ -101,9 +101,7 @@ gulp.task('inject', ['jshint', 'styles:compass'], function () {
   ], { read: false });
 
   var injectScripts = gulp.src([
-    path.join(config.paths.src, '/app/**/*.js'),
-    path.join('!' + config.paths.src, '/app/**/*.spec.js'),
-    path.join('!' + config.paths.src, '/app/**/*.mock.js')
+    path.join(config.paths.src, '/app/**/*.js')
   ]).pipe($.angularFilesort());
 
   var injectOptions = {

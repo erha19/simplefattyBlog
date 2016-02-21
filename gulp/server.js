@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     config = require('./config'),
     path = require('path'),
     browserSync = require('browser-sync'),
-	//var proxyMiddleware = require('http-proxy-middleware'),
+	proxyMiddleware = require('http-proxy-middleware'),
     browserSyncSpa = require('browser-sync-spa'),
 	//var bs = browserSync.create(),
 	/**
@@ -59,9 +59,9 @@ function browserSyncInit (baseDir,open,port) {
 		        "/bower_components": "bower_components"
 		    },
 		    //使用代理
-		   //  middleware:[
-			  //   proxyMiddleware(['/api/**','/auth/**'], {target: 'http://localhost:9000',changeOrigin:true})
-			  // ]
+		    middleware:[
+			    proxyMiddleware(['/api/**','/auth/**'], {target: 'http://localhost:9000',changeOrigin:true})
+			  ]
 			}
 		});
 }

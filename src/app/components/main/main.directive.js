@@ -1,6 +1,6 @@
 (function() {
 
-	angular.module('sf_blog').directive('loadMore', ['$timeout', "$window","EVENT", function($timeout, $window,EVENT) {
+	angular.module('sf_blog.main').directive('loadMore', ['$timeout', "$window","EVENT", function($timeout, $window,EVENT) {
 		return {
 			restrict: 'AE',
 			link: function(scope, element, attrs) {

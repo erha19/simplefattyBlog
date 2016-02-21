@@ -1,15 +1,6 @@
 (function() {
     'use strict';
-    angular.module('sf_blog')
-        .config(['$stateProvider', function($stateProvider) {
-            $stateProvider
-                .state('home', {
-                    url: '/',
-                    templateUrl: 'app/components/main/main.html',
-                    controller: 'MainController',
-                    controllerAs: 'main'
-                });
-        }])
+    angular.module('sf_blog.main')
         .controller('MainController', ['$scope', '$timeout', 'Blog', 'Tags', 'EVENT', function($scope, $timeout, Blog, Tags, EVENT) {
 
             var tagListName = {},

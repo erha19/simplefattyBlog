@@ -1,6 +1,6 @@
 {
   "development": {
-    "ServerUrl": "/api",
+    "ServerUrl": "http://localhost:9000/api",
     "IsDebug":true,
     "CookieConfig":{
       "domain":""

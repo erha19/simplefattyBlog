@@ -1,8 +1,8 @@
-    <sf-banner></sf-banner>
-    <div class="container sf_container">
-        <div class="row" data-ng-repeat="blog in blogList">
+    <sf-banner class='slide-top'></sf-banner>
+    <div class="container sf_container" lazy-container>
+        <div class="row slide-top" data-ng-repeat="blog in blogList">
             <div class="col-sm-offset-1 col-sm-10 sf_artical_item">
-                <img ng-src="{{::blog.image}}" class="img-responsive" alt="Responsive image">    
+                <img lazy-src="{{blog.image}}" class="img-responsive" animate-visible="true" animate-speed="0.5s" alt="{{::blog.title}}">    
                 <h1 ui-sref="article({aid:blog._id})">
                     {{::blog.title}}
                     <span class="icon-read">{{::blog.visit_count}}</span> <i class="icon-talk">{{::blog.comment_count}}</i>

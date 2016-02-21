@@ -51,5 +51,7 @@
   },
   "author": "simplefatty",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "http-proxy-middleware": "^0.10.0"
+  }
 }

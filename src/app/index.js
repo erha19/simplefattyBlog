@@ -5,8 +5,10 @@
 		'ui.router',
 		'ngTouch',
 		'ngSanitize',
+		'sf_blog.main',
 		'sf_blog.article',
 		'sf_blog.resources',
+		'sf_blog.directive',
 		'sf_blog.service'
 	])
 	.config(['$logProvider','$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 'IsDebug',function ($logProvider,$stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, IsDebug) {
