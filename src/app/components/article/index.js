@@ -7,13 +7,16 @@
                     url: '/article/:aid',
                     templateUrl: 'app/components/article/article.html',
                     controller: 'ArticleCtrl',
-                    title: ['$stateParams', 'Blog', function($stateParams, Blog) {
-                        Blog.getFrontArticle({
-                            id: $stateParams.aid
-                        }).then(function(data){
-                            return data.data.title;
-                        })
-                    }]
+                    controllerAs:'artical',
+                    resolve:{
+                        stateTitle:['$stateParams','Blog',function($stateParams,Blog){
+                            return Blog.getFrontArticle({
+                                id: $stateParams.aid
+                            }).then(function (response) {
+                                return response.data.title;
+                            });
+                    }]}
                 });
+
         }])
 })();

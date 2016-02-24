@@ -23,8 +23,7 @@
     "angular-sanitize": "^1.5.0",
     "angular-touch": "^1.5.0",
     "angular-resource": "^1.5.0",
-    "angular-animate": "^1.5.0",
-    "jquery": "^2.2.1"
+    "angular-animate": "^1.5.0"
   },
   "overrides": {
     "bootstrap": {
@@ -48,7 +47,9 @@
       ]
     },
     "jquery": {
-      "main": ["dist/jquery.min.js"]
+      "main": [
+        
+      ]
     }
   }
 }

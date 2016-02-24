@@ -203,7 +203,6 @@ body{
 		font-style: normal;
 		padding-left:20px;
 		background-repeat:no-repeat;
-		background-attachment:center;
 		height: 14px;
 		margin:5px;
 		opacity: 0;
@@ -211,6 +210,7 @@ body{
 	}
 	p{
 		line-height: 25px;
+		color:#636262;
 	}
 	.artical_tag{
 		height: 30px;
@@ -226,6 +226,9 @@ body{
 			height: 16px;
 			line-height: 16px;
 			margin:5px;
+		}
+		.tag{
+			margin-left: 0;
 		}
 	}
 }
