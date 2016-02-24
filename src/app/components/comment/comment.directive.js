@@ -25,7 +25,7 @@
 				el.setAttribute('data-url', data_url); //必选参数
 				el.setAttribute('data-title', data_title); //必选参数
 				el.setAttribute('data-author-key', data_author_key); //可选参数
-				// DUOSHUO.EmbedThread(el);
+				DUOSHUO.EmbedThread(el);
 				element.append(el);
 
 			}
