@@ -2,7 +2,6 @@
     'use strict';
     angular.module('sf_blog.article')
         .controller('ArticleCtrl', ['$rootScope', '$scope', '$state', 'Blog', '$stateParams', '$location','stateTitle', function($rootScope, $scope, $state, Blog, $stateParams, $location,stateTitle) {
-            $rootScope.title=stateTitle;
             var vm=this;
             vm.aid = $stateParams.aid;
             vm.url = $location.$$absUrl;

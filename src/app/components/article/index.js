@@ -9,10 +9,11 @@
                     controller: 'ArticleCtrl',
                     controllerAs:'artical',
                     resolve:{
-                        stateTitle:['$stateParams','Blog',function($stateParams,Blog){
+                        stateTitle:['$stateParams','$rootScope','Blog',function($stateParams,$rootScope,Blog){
                             return Blog.getFrontArticle({
                                 id: $stateParams.aid
                             }).then(function (response) {
+                                $rootScope.title=response.data.title;
                                 return response.data.title;
                             });
                     }]}
