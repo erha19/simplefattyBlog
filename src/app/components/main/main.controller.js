@@ -1,6 +1,12 @@
 (function() {
     'use strict';
     angular.module('sf_blog.main')
+        .filter('dataFilter',function(){
+            return function(input,params){
+                var date=new Date(input);
+                return (date.getFullYear())+'.'+(date.getMonth()+1)+'.'+(date.getDate())
+            }
+        })
         .controller('MainController', ['$scope', '$timeout', 'Blog', 'Tags', 'EVENT', function($scope, $timeout, Blog, Tags, EVENT) {
 
             var tagListName = {},

@@ -3,24 +3,29 @@
 
   angular.module('sf_blog')
     .component('sfBanner', {
-      templateUrl: 'app/components/banner/banner.html'
+      templateUrl: 'app/components/banner/banner.html',
+      controller:'bannerCtrl',
+      controllerAs:'banner'
     })
-    .directive('tagContent', ['$timeout',function($timeout) {
-      return {
-        template: '<span ng-bind="tagName"></span>',
-        scope:true,
-        replace:true,
-        link: function(scope, elm, attrs, ctrl) {
-        var tags = [
-            "Front-End Developer",
+    .controller('bannerCtrl', ['$scope', function(){
+        this.tags=["Front-End Developer",
             "Designer",
             "Programmer",
             "Gamer",
             "JavaScript Developer",
             "HTML Developer",
-            "Web Programmer"
-          ];
-          scope.tagName=tags[0];
+            "Web Programmer"]
+    }])
+    .directive('tagContent', ['$timeout',function($timeout) {
+      return {
+        template: '<span ng-bind="tagName"></span>',
+        scope:{
+          tags:'='
+        },
+        replace:true,
+        link: function(scope, elm, attrs, ctrl) {
+          
+          scope.tagName=scope.tags[0];
 
           $timeout(backspaceTagContent, 1000,true);
 
@@ -51,7 +56,7 @@
           }
 
           function getRandomTag() {
-            return tags[Math.floor(Math.random() * tags.length)];
+            return scope.tags[Math.floor(Math.random() * scope.tags.length)];
 
           }
         }

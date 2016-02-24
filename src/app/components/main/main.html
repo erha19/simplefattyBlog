@@ -9,7 +9,7 @@
                 </h1>
                 <div class="artical_tag">
                     <div class="tag icon-tag" data-ng-bind="::blog.tagName"></div>
-                    <div class="time icon-time" data-ng-bind="::blog.publish_time"></div>
+                    <div class="time icon-time" data-ng-bind="::blog.publish_time|dataFilter"></div>
                 </div>
                 <p data-ng-bind="::blog.introduce">
                     
