@@ -4,7 +4,7 @@
 	angular.module('sf_blog').component('sfFooter', {
 		templateUrl: 'app/components/footer/footer.html',
 		controller: 'footerCtrl',
-		controllerAs: 'footer',
+		controllerAs: 'footer'
 		// ,
 		// bindings: {
 		// }
