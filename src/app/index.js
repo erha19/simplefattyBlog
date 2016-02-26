@@ -36,7 +36,6 @@
 			}
 
 			var title=getPageTitle(current);
-			console.log(title)
 			$timeout(function(){
 				$window.title=title;
 				$document[0].title=title;

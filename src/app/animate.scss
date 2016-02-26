@@ -267,55 +267,55 @@
 // /* Slide Down
 // /* ------------------------------------------- */
 
-// .slide-down {
-//   @include easingTimingFunction();
+.slide-down {
+  @include easingTimingFunction();
 
-//   &.ng-enter {
-//     @include transform(translateY(-60px)); 
-//     @include transitionDuration(250ms);
-//     opacity: 0;
-//   }
+  &.ng-enter {
+    @include transform(translateY(-60px)); 
+    @include transitionDuration(250ms);
+    opacity: 0;
+  }
 
-//   &.ng-enter-active {
-//     @include transform(translateY(0));
-//     opacity: 1; 
-//   }
+  &.ng-enter-active {
+    @include transform(translateY(0));
+    opacity: 1; 
+  }
 
-//   &.ng-leave {
-//     @include transform(translateY(0));
-//     @include transitionDuration(250ms);
-//     opacity: 1;
-//   }
+  &.ng-leave {
+    @include transform(translateY(0));
+    @include transitionDuration(250ms);
+    opacity: 1;
+  }
 
-//   &.ng-leave-active {
-//     @include transform(translateY(-60px)); 
-//     opacity: 0; 
-//   }
+  &.ng-leave-active {
+    @include transform(translateY(-60px)); 
+    opacity: 0; 
+  }
 
-//   // Hide
-//   &.ng-hide-add {
-//     @include transform(translateY(0));
-//     @include transitionDuration(250ms);
-//     opacity:1;    
-//   } 
-//   &.ng-hide-add.ng-hide-add-active {
-//     @include transform(translateY(-60px)); 
-//     opacity:0;
-//   }
+  // Hide
+  &.ng-hide-add {
+    @include transform(translateY(0));
+    @include transitionDuration(250ms);
+    opacity:1;    
+  } 
+  &.ng-hide-add.ng-hide-add-active {
+    @include transform(translateY(-60px)); 
+    opacity:0;
+  }
 
-//   // Show
-//   &.ng-hide-remove {
-//     @include transform(translateY(-60px)); 
-//     @include transitionDuration(250ms);
-//     display:block!important;
-//     opacity:0;
-//   }
-//   &.ng-hide-remove.ng-hide-remove-active {
-//     @include transform(translateY(0));
-//     opacity:1;
-//   }
+  // Show
+  &.ng-hide-remove {
+    @include transform(translateY(-60px)); 
+    @include transitionDuration(250ms);
+    display:block!important;
+    opacity:0;
+  }
+  &.ng-hide-remove.ng-hide-remove-active {
+    @include transform(translateY(0));
+    opacity:1;
+  }
   
-// }
+}
 
 
 /* ------------------------------------------- */
@@ -541,54 +541,54 @@
 /* Scale Fade 
 /* ------------------------------------------- */
 
-.scale-fade {
-  @include easingTimingFunction();
+// .scale-fade {
+//   @include easingTimingFunction();
 
-  &.ng-enter {
-    @include transform(scale(0.7));
-    @include transitionDuration(250ms);
-    opacity: 0;
-  }
+//   &.ng-enter {
+//     @include transform(scale(0.7));
+//     @include transitionDuration(250ms);
+//     opacity: 0;
+//   }
 
-  &.ng-enter-active {
-    @include transform(scale(1));
-    opacity: 1; 
-  }
+//   &.ng-enter-active {
+//     @include transform(scale(1));
+//     opacity: 1; 
+//   }
 
-  &.ng-leave {
-    @include transform(scale(1));
-    @include transitionDuration(250ms);
-    opacity: 1;
-  }
+//   &.ng-leave {
+//     @include transform(scale(1));
+//     @include transitionDuration(250ms);
+//     opacity: 1;
+//   }
 
-  &.ng-leave-active {
-    @include transform(scale(0.7)); 
-    opacity: 0; 
-  }
+//   &.ng-leave-active {
+//     @include transform(scale(0.7)); 
+//     opacity: 0; 
+//   }
 
-  // Hide
-  &.ng-hide-add {
-    @include transform(scale(1));
-    @include transitionDuration(250ms);
-    opacity:1;    
-  } 
-  &.ng-hide-add.ng-hide-add-active {
-    @include transform(scale(0.7)); 
-    opacity:0;
-  }
+//   // Hide
+//   &.ng-hide-add {
+//     @include transform(scale(1));
+//     @include transitionDuration(250ms);
+//     opacity:1;    
+//   } 
+//   &.ng-hide-add.ng-hide-add-active {
+//     @include transform(scale(0.7)); 
+//     opacity:0;
+//   }
 
-  // Show
-  &.ng-hide-remove {
-    @include transform(scale(0.7));
-    @include transitionDuration(250ms);
-    display:block!important;
-    opacity:0;
-  }
-  &.ng-hide-remove.ng-hide-remove-active {
-    @include transform(scale(1));
-    opacity:1;
-  }
-}
+//   // Show
+//   &.ng-hide-remove {
+//     @include transform(scale(0.7));
+//     @include transitionDuration(250ms);
+//     display:block!important;
+//     opacity:0;
+//   }
+//   &.ng-hide-remove.ng-hide-remove-active {
+//     @include transform(scale(1));
+//     opacity:1;
+//   }
+// }
 
 
 /* ------------------------------------------- */
