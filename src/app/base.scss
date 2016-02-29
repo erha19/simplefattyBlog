@@ -83,11 +83,13 @@ body{
 	border:1px solid $containerBorderColor;
 	@media screen and (max-width: 480px){
 		border-width:0;
+		margin-bottom:0;
 	}
 	h1{
 		display: block;
 		width: 100%;
 		font-size: 1.3em;
+		line-height: 1.5em;
 		cursor: pointer;
 		&:hover{
 			span,i{
