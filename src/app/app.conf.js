@@ -1,8 +1,8 @@
 (function () { 
  return angular.module('sf_blog')
-.constant('ServerUrl', "http://localhost:9000/api")
-.constant('IsDebug', true)
-.constant('CookieConfig', {"domain":""})
+.constant('ServerUrl', "/api")
+.constant('IsDebug', false)
+.constant('CookieConfig', {"domain":"sf_blog"})
 .constant('EVENT', {"NeedToLoad":"need-to-load"});
 
 })();
