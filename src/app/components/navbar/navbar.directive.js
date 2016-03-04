@@ -15,12 +15,10 @@
 					if (afterScrollTop >100) {
 						delta = afterScrollTop - beforeScrollTop;
 						if (delta < 0) {
-							console.log('up')
 							timer = $timeout(function() {
 								scope.state = true;
 							}, 200, true)
 						} else if (delta > 0) {
-							console.log('down')
 
 							timer = $timeout(function() {
 								scope.state = false;

@@ -17,13 +17,14 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.6",
+    "highlight": "^9.2.0",
     "angular": "^1.5.0",
     "angular-ui-router": "^0.2.18",
     "angular-sanitize": "^1.5.0",
     "angular-touch": "^1.5.0",
     "angular-resource": "^1.5.0",
-    "angular-animate": "^1.5.0"
+    "angular-animate": "^1.5.0",
+    "angular-highlightjs": "^0.5.1"
   },
   "overrides": {
     "bootstrap": {
@@ -47,8 +48,11 @@
       ]
     },
     "jquery": {
-      "main": [
-        
+      "main": []
+    },
+    "highlight":{
+      "main":[
+        "src/highlight.js","src/styles/tomorrow.css"
       ]
     }
   }

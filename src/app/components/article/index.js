@@ -1,7 +1,11 @@
 (function() {
     'use strict';
-    angular.module('sf_blog.article', [])
-        .config(['$stateProvider', function($stateProvider) {
+    angular.module('sf_blog.article', ['hljs'])
+        .config(['$stateProvider','hljsServiceProvider', function($stateProvider,hljsServiceProvider) {
+            // hljsServiceProvider.setOptions({
+            //     // replace tab with 4 spaces
+            //     tabReplace: '    '
+            // })
             $stateProvider
                 .state('article', {
                     url: '/article/:aid',
