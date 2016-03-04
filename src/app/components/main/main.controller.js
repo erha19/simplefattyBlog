@@ -26,6 +26,7 @@
             })();
             $scope.isLoading = true;
             Tags.getFrontTagList().then(function(result) {
+                $scope.tagList=result.data;
                 for (var i in result.data) {
                     tagListName[result.data[i]._id] = result.data[i].name
                 }
@@ -38,9 +39,15 @@
                 sortName: 'publish_time',
                 tagId: ''
             };
-
+            $scope.changeTag=function(tagId){
+                $scope.options.currentPage = 1;
+                $scope.options.tagId = tagId;
+                $scope.options.sortName = '';
+                loadingArtical($scope.options);
+            }
             function loadingArtical(options, isReset) {
                 $scope.isLoading = true;
+                $scope.blogList = [];
                 //数量需要过滤
                 Blog.getFrontBlogCount(options).then(function(result) {
                     $scope.blogCount = result.count;

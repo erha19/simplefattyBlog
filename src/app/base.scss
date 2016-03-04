@@ -119,6 +119,59 @@ pre{
 	.artical_tag{
 		height: 30px;
 		width: 100%;
+		position: relative;
+		cursor: pointer;
+		&:hover>.taglist{
+			opacity: 1;
+		}
+		.taglist{
+			opacity: 0;
+			transition: all .2s ease;
+			position:absolute;
+			top: -206px;
+			left: -115px;
+			margin:0;
+			padding:0;
+			
+			list-style: none;
+			border:1px solid #DDD;
+			li{
+				border-bottom:1px solid #DDD;
+				width: 100px;
+				line-height: 40px;
+				text-align: center;
+				height: 40px;
+				color:#565353;
+				&:hover{
+					color:#333;
+				}
+			}
+			&:before{
+				position:absolute;
+				display: block;
+				top: 214px;
+				right: -11px;
+				width: 0;
+			    height: 0;
+			    border-top: 5px solid transparent;
+			    border-left: 10px solid #DDD;
+			    border-bottom: 5px solid transparent;
+			}
+			&:after{
+				position:absolute;
+				display: block;
+				top: 214px;
+				right: -10px;
+				width: 0;
+			    height: 0;
+			    border-top: 5px solid transparent;
+			    border-left: 10px solid #fff;
+			    border-bottom: 5px solid transparent;
+			}
+			&>li:last-child{
+				border-width:0;
+			}
+		}
 		.tag,.time{
 			float: left;
 			display: inline-block;

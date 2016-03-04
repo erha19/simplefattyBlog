@@ -7,6 +7,9 @@
                     {{::blog.title}}
                 </h1>
                 <div class="artical_tag">
+                    <ul class="taglist clearfix">
+                        <li data-ng-repeat="tag in tagList" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
+                    </ul>
                     <div class="tag icon-tag" data-ng-bind="::blog.tagName"></div>
                     <div class="time icon-time" data-ng-bind="::blog.publish_time|dataFilter"></div>
                 </div>
