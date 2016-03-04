@@ -13,10 +13,10 @@
             }).then(function(result) {
                 vm.article = result.data;
                 vm.title = result.data.title;
-                $timeout(function(){
-                    vm.article.content=vm.article.content.replace(/<pre ([^<>]*)>([^<>]*)<\/pre>/gi, '<hljs$1>$2</hljs>');
-                    console.log(vm.article.content)
-                },0,true)
+                // $timeout(function(){
+                //     vm.article.content=vm.article.content.replace(/<pre ([^<>]*)>([^<>]*)<\/pre>/gi, '<hljs$1>$2</hljs>');
+                //     console.log(vm.article.content)
+                // },0,true)
             }).then(function() {
                 var options = {
                     id: vm.aid,
