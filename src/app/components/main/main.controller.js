@@ -35,7 +35,7 @@
             $scope.blogList = [];
             $scope.options = {
                 currentPage: 1,
-                itemsPerPage: 10,
+                itemsPerPage: 3,
                 sortName: 'publish_time',
                 tagId: ''
             };
