@@ -32,7 +32,16 @@
 					}
 					beforeScrollTop = angular.copy(afterScrollTop)
 				});
-			}
+			},
+			controller:navbar
+		}
+
+		navbar.$inject=['$rootScope','$window']
+
+		function navbar($rootScope,$window){
+			    $rootScope.$on('$stateChangeSuccess',function( /*event, toState, toParams, fromState, fromParams*/ ) {
+                $window.scrollTo(0, 0);
+            });
 		}
 	}])
 })();
