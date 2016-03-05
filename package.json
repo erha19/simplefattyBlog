@@ -52,6 +52,7 @@
   "author": "simplefatty",
   "license": "ISC",
   "dependencies": {
+    "gulp-autoprefixer": "^2.3.1",
     "http-proxy-middleware": "^0.10.0"
   }
 }
