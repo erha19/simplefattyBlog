@@ -72,6 +72,7 @@
                             $scope.blogList = $scope.blogList.concat(result.data);
                         }
                         $scope.isLoading = false;
+                        console.log($scope.blogList)
                     }, 0, true)
                 }).catch(function() {
                     $scope.isLoading = false;

@@ -232,6 +232,13 @@ ul,li{
 	margin:15px 0;
 	line-height:30px;
 	text-align:center;
+	a{
+		color:#333;
+		&:hover{
+			text-decoration: none;
+			color:#333;
+		}
+	}
 	@media screen and (max-width: 480px){
 		font-size: 12px;
 	}
