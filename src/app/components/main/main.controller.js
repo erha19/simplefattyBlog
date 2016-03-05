@@ -43,11 +43,10 @@
                 $scope.options.currentPage = 1;
                 $scope.options.tagId = tagId;
                 $scope.options.sortName = '';
-                loadingArtical($scope.options);
+                loadingArtical($scope.options,true);
             }
             function loadingArtical(options, isReset) {
                 $scope.isLoading = true;
-                $scope.blogList = [];
                 //数量需要过滤
                 Blog.getFrontBlogCount(options).then(function(result) {
                     $scope.blogCount = result.count;
