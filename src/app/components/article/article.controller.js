@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     angular.module('sf_blog.article')
-        .controller('ArticleCtrl', ['$rootScope', '$scope', '$state', 'Blog', '$stateParams', '$location','$timeout', function($rootScope, $scope, $state, Blog, $stateParams, $location,$timeout) {
+        .controller('ArticleCtrl', ['$rootScope', '$window', '$state', 'Blog', '$stateParams', '$location','$timeout', function($rootScope, $window, $state, Blog, $stateParams, $location,$timeout) {
             var vm=this;
             vm.aid = $stateParams.aid;
             vm.url = $location.$$absUrl;
@@ -31,7 +31,9 @@
             }).catch(function() {
                 $state.go('home');
             });
-
+            vm.$on('$stateChangeSuccess',function( /*event, toState, toParams, fromState, fromParams*/ ) {
+                $window.scrollTo(0, 0);
+            });
 
         }])
 })();
