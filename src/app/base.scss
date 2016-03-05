@@ -55,6 +55,12 @@ body{
 pre{
 	background-color:#fff;
 }
+img { max-width:100%;}
+ul,li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
 /* Let's get this party started */
 ::-webkit-scrollbar {
     width:10px;
@@ -78,6 +84,33 @@ pre{
  */
 .sf_container{
 	background-color:$containerBgColor;
+}
+.notfound{
+	width: 100%;
+	p{
+		line-height: 80px;
+		font-size: 16px;
+		text-align:center;
+		margin-top: 10px;
+		color:#8C8B8B;
+	}
+	ul{
+		width: 100%;
+		max-width: 622px;
+		margin:0 auto;
+		li{
+			padding:5px 10px;
+			float: left;
+			margin:10px 10px;
+			border:1px solid #DDD;
+			transition: all .2s ease;
+			cursor: pointer;
+			&:hover{
+				color:$navHoverBgColor;
+				border:1px solid $navHoverBgColor;
+			}
+		}
+	}
 }
 .sf_artical_item{
 	margin-top:20px;
@@ -116,6 +149,7 @@ pre{
 		line-height: 25px;
 		color:#636262;
 	}
+
 	.artical_tag{
 		height: 30px;
 		width: 100%;

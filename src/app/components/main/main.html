@@ -1,5 +1,11 @@
     <sf-banner class='slide-top'></sf-banner>
     <div class="container sf_container" lazy-container>
+        <div class="notfound slide-top" ng-if='blogList.length<1&&!isLoading'>
+            <p>暂无该标签内的文章哦</p>
+            <ul class="clearfix">
+                <li data-ng-repeat="tag in tagList" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
+            </ul>
+        </div>
         <div class="row slide-top" data-ng-repeat="blog in blogList">
             <div class="col-sm-offset-1 col-sm-10 sf_artical_item">
                 <img lazy-src="{{blog.image}}" class="img-responsive" animate-visible="true" animate-speed="0.5s" alt="{{::blog.title}}">    
@@ -7,9 +13,9 @@
                     {{::blog.title}}
                 </h1>
                 <div class="artical_tag">
-                    <!-- <ul class="taglist clearfix">
+                    <ul class="taglist clearfix">
                         <li data-ng-repeat="tag in tagList" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
-                    </ul> -->
+                    </ul>
                     <div class="tag icon-tag" data-ng-bind="::blog.tagName"></div>
                     <div class="time icon-time" data-ng-bind="::blog.publish_time|dataFilter"></div>
                 </div>
