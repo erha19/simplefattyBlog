@@ -10,7 +10,7 @@
 		// }
 	})
 	.controller('footerCtrl', function() {
-	  this.info = 'Simplefatty ©2015-2016  粤ICP备16009462号';
+	  this.info = 'Simplefatty ©2015-2016';
 	});
 
 })();
