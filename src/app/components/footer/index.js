@@ -9,7 +9,7 @@
 				// bindings: {
 				// }
 		})
-		.controller('footerCtrl', ['$rootScope', '$window', function() {
+		.controller('footerCtrl', ['$rootScope', '$window', function($rootScope,$window) {
 			this.info = 'Simplefatty © 2015-2016 ';
 
 			$rootScope.$on('$stateChangeSuccess', function( /*event, toState, toParams, fromState, fromParams*/ ) {
