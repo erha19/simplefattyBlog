@@ -3,8 +3,13 @@
     angular.module('sf_blog.main')
         .filter('dataFilter',function(){
             return function(input,params){
-                var date=new Date(input);
-                return (date.getFullYear())+'.'+(date.getMonth()+1)+'.'+(date.getDate())
+                var date=new Date(input),
+                    year=date.getFullYear(),
+                    month=date.getMonth()+1,
+                    day=date.getDate();
+                    month=month>9?month:'0'+month;
+                    day=day>9?day:'0'+day;
+                return year+'.'+month+'.'+day
             }
         })
         .controller('MainController', ['$scope', '$timeout', 'Blog', 'Tags', 'EVENT', function($scope, $timeout, Blog, Tags, EVENT) {

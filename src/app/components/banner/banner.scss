@@ -4,13 +4,6 @@ $bannerColor:#009688;
 $bannerBgColor:#fff;
 $bannerFont:'Orbitron', sans-serif;
 $bannerBorderColor:rgba(0,0,0,.13);
-h1 {
-  font-size: 3em;
-  
-  @media screen and (max-width: 480px) {
-    font-size: 1.5em;
-  }
-}
 .sf_banner {
   text-align: center;
   width: 100%;
@@ -27,6 +20,13 @@ h1 {
   z-index: 10;
   @media screen and (max-width: 480px){
     padding:10px 0;
+  }
+  h1 {
+    font-size: 3em;
+    
+    @media screen and (max-width: 480px) {
+      font-size: 1.5em;
+    }
   }
 }
 .logo-tag {
