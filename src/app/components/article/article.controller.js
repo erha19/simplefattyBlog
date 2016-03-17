@@ -1,4 +1,4 @@
-(function() {
+(function(window) {
     'use strict';
     angular.module('sf_blog.article')
         .controller('ArticleCtrl', ['$rootScope', '$scope', '$state', 'Blog','actical', '$stateParams', '$location','$timeout', function($rootScope, $scope, $state, Blog, actical,$stateParams, $location,$timeout) {
@@ -14,6 +14,7 @@
                 id: vm.common.aid
             }).then(function(result) {
                 vm.article = actical;
+                window.prerenderReady = true;
             }).then(function() {
                 var options = {
                     id: vm.common.aid,
@@ -30,4 +31,4 @@
             });
 
         }])
-})();
+})(window);
