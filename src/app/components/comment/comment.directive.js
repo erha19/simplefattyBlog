@@ -19,12 +19,11 @@
 					data_url = scope.url,
 					data_author_key = scope.url,
 					data_title = scope.title;
-					// dynamic load the duoshuo comment box
-				var el = document.createElement('div'); //该div不需要设置class="ds-thread"
-				el.setAttribute('data-thread-key', data_thread_key); //必选参数
-				el.setAttribute('data-url', data_url); //必选参数
-				el.setAttribute('data-title', data_title); //必选参数
-				el.setAttribute('data-author-key', data_author_key); //可选参数
+				var el = document.createElement('div'); 
+				el.setAttribute('data-thread-key', data_thread_key);
+				el.setAttribute('data-url', data_url); 
+				el.setAttribute('data-title', data_title);
+				el.setAttribute('data-author-key', data_author_key); 
 				DUOSHUO.EmbedThread(el);
 				element.append(el);
 

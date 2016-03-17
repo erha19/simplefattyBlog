@@ -8,5 +8,5 @@
     <div class="markdown col-sm-offset-2 col-sm-8 slide-top" ng-show='artical.article.content' highlight ng-model="artical.article.content">
 
     </div>
-    <comment class='col-sm-offset-2 col-sm-8' article='artical.common.aid' title='artical.title' url='artical.common.url'></comment>
+    <comment class='col-sm-offset-2 col-sm-8' ng-if='artical.common.aid' article='artical.common.aid' title='artical.title' url='artical.common.url'></comment>
 </div>

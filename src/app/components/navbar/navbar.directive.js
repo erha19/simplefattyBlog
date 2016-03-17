@@ -1,8 +1,12 @@
 (function() {
 
-	angular.module('sf_blog').directive('scrollHidden', ['$timeout', "$window", "$document", function($timeout, $window, $document) {
+	angular.module('sf_blog')
+
+	.directive('scrollHidden', ['$timeout', "$window", "$document", function($timeout, $window, $document) {
 		return {
 			restrict: 'AE',
+			controller:navbarCtroller,
+			controllerAs:'navbarCtrl',
 			link: function(scope, element, attrs) {
 				var beforeScrollTop = document.body.scrollTop,
 					afterScrollTop, delta, timer = null;
@@ -35,4 +39,17 @@
 			}
 		}
 	}])
+	.controller('navbarCtroller',navbarCtroller)
+
+	navbarCtroller.$inject=['$scope','$state']
+
+	function navbarCtroller($scope,$state){
+		var vm=this;
+		vm.goHome=function(){
+			$state.go('home');
+			$state.reload();
+		}
+	}
+
+	
 })();
