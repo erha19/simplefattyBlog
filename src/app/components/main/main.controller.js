@@ -77,6 +77,7 @@
                             $scope.blogList = $scope.blogList.concat(result.data);
                         }
                         $scope.isLoading = false;
+                        window.prerenderReady = true;
                     }, 100, true)
                 }).catch(function() {
                     $scope.isLoading = false;
@@ -91,4 +92,4 @@
                 }
             })
         }])
-})();
+})(window);
