@@ -23,6 +23,7 @@
 	  $httpProvider.interceptors.push('AuthInterceptor');
 	  // Enable log
 	  $logProvider.debugEnabled(IsDebug);
+	  $locationProvider.hashPrefix('!');
 	  $urlRouterProvider.otherwise('/');
 	}
 
@@ -34,17 +35,20 @@
 			if(current&&(current.$$route||current).redirectTo){
 				return ;
 			}
-
-			var title=getPageTitle(current);
-			$timeout(function(){
-				$window.title=title;
-				$document[0].title=title;
-			},0,true)
+			$rootScope.seo={
+				description:getMetaDescription(current),
+				title:getPageTitle(current)
+			}
 		})
+
+		function getMetaDescription(current){
+			var description=current.description;
+			return description?description:$rootScope.actical.description;
+		}
 
 		function getPageTitle(current){
 			var title=current.title;
-			return angular.isUndefined(title)?$rootScope.title:title;
+			return title?title:$rootScope.actical.title;
 		}
 
 	}	

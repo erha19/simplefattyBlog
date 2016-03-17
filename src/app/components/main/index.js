@@ -8,7 +8,8 @@
                     templateUrl: 'app/components/main/main.html',
                     controller: 'MainController',
                     controllerAs: 'main',
-                    title:'Simplefatty|首页'
+                    title:'Simplefatty|首页',
+                    description:'Simplefatty的个人博客'
                 });
         }])
 })();
