@@ -45,10 +45,6 @@
 
 	function navbarCtroller($scope,$state){
 		var vm=this;
-		vm.goHome=function(){
-			$state.go('home');
-			$state.reload();
-		}
 	}
 
 	
