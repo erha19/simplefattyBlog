@@ -118,6 +118,7 @@ ul,li{
 	padding:10px;
 	border:1px solid $containerBorderColor;
 	@media screen and (max-width: 480px){
+		margin-top:0;
 		border-width:0;
 		margin-bottom:0;
 	}
