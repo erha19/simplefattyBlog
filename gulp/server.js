@@ -60,7 +60,7 @@ function browserSyncInit (baseDir,open,port) {
 		    },
 		    //使用代理
 		    middleware:[
-			    proxyMiddleware(['/api/**','/auth/**'], {target: 'http://localhost:9000',changeOrigin:true})
+			    proxyMiddleware(['/api/**','/auth/**'], {target: 'http://simplefatty.cn/',changeOrigin:true})
 			  ]
 			}
 		});
