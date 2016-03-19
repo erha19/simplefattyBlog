@@ -12,8 +12,7 @@
                 return year+'.'+month+'.'+day
             }
         })
-        .controller('MainController', ['$scope', '$timeout', 'Blog', 'Tags', 'EVENT', function($scope, $timeout, Blog, Tags, EVENT) {
-
+        .controller('MainController', ['$scope', '$timeout', 'Blog', 'Tags', 'EVENT','$window', function($scope, $timeout, Blog, Tags, EVENT,$window) {
             var tagListName = {},
                 tagArray = [];
 
@@ -77,7 +76,7 @@
                             $scope.blogList = $scope.blogList.concat(result.data);
                         }
                         $scope.isLoading = false;
-                        window.prerenderReady = true;
+                        $window.prerenderReady = true;
                     }, 100, true)
                 }).catch(function() {
                     $scope.isLoading = false;
@@ -92,4 +91,4 @@
                 }
             })
         }])
-})(window);
+})();

@@ -1,6 +1,6 @@
 {
   "development": {
-    "ServerUrl": "/",
+    "ServerUrl": "/api",
     "IsDebug":true,
     "CookieConfig":{
       "domain":""
