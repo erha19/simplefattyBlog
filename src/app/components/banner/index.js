@@ -11,9 +11,6 @@
         this.tags=["Front-End Developer",
             "Designer",
             "Programmer",
-            "Gamer",
-            "JavaScript Developer",
-            "HTML Developer",
             "Web Programmer"]
     }])
     .directive('tagContent', ['$timeout',function($timeout) {

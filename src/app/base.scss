@@ -84,6 +84,12 @@ ul,li{
  */
 .sf_container{
 	background-color:$containerBgColor;
+	width:100%*8/12;
+	margin:0 auto;
+	@media screen and (max-width: 480px){
+		width: 100%;
+		padding:10px;
+	}
 }
 .notfound{
 	width: 100%;
@@ -133,6 +139,10 @@ ul,li{
 				opacity: 1;
 			}
 		}
+		@media screen and(max-width:480px){
+			height: 1.5em;
+			display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+		}
 	}
 	
 	span,i{
@@ -149,6 +159,12 @@ ul,li{
 	p{
 		line-height: 25px;
 		color:#636262;
+		position: relative;
+		@media screen and (max-width: 480px){
+			max-height: 50px;
+			overflow: hidden;
+			padding-bottom:10px;
+		}
 	}
 
 	.artical_tag{
