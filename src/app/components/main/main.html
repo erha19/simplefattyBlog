@@ -8,10 +8,10 @@
         </div>
         <div class="row slide-top" data-ng-repeat="blog in blogList">
             <div class="col-sm-offset-1 col-sm-10 sf_artical_item">
-                <img lazy-src="{{blog.image}}" class="img-responsive" animate-visible="true" animate-speed="0.5s" alt="{{::blog.title}}">    
-                <h1 ui-sref="article({aid:blog._id})">
+                <img ui-sref="article({aid:blog._id})" lazy-src="{{blog.image}}" class="img-responsive" animate-visible="true" animate-speed="0.5s" alt="{{::blog.title}}">    
+                <a class='artical_title' ui-sref="article({aid:blog._id})">
                     {{::blog.title}}
-                </h1>
+                </a>
                 <div class="artical_tag">
                     <ul class="taglist clearfix">
                         <li data-ng-repeat="tag in tagList" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>

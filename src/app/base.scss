@@ -36,7 +36,7 @@ $navActiveColor:#009688;
 /**
  * container
  */
-$containerBgColor:#fefdfd;
+$containerBgColor:#fff;
 $containerBorderColor:rgba(0,0,0,.1);
 
 body{
@@ -84,7 +84,7 @@ ul,li{
  */
 .sf_container{
 	background-color:$containerBgColor;
-	width:100%*8/12;
+	width:100%*10/12;
 	margin:0 auto;
 	@media screen and (max-width: 480px){
 		width: 100%;
@@ -128,21 +128,32 @@ ul,li{
 		border-width:0;
 		margin-bottom:0;
 	}
-	h1{
+	.artical_title{
 		display: block;
 		width: 100%;
 		font-size: 1.3em;
 		line-height: 1.5em;
+		color:$basebodyColor;
 		cursor: pointer;
+		margin: .67em 0;
 		&:hover{
+			text-decoration: none;
 			span,i{
 				opacity: 1;
 			}
+		}
+		&:hover,&:active,&:visited,&:focus{
+			color:$basebodyColor;
+			text-decoration: none;
 		}
 		@media screen and(max-width:480px){
 			height: 1.5em;
 			display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 		}
+	}
+	img{
+		width: 100%;
+		cursor: pointer;
 	}
 	
 	span,i{

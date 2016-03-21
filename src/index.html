@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width">
     <meta name="fragment" content="!"> 
     <title data-ng-bind="seo.title">Simplefatty</title>
-    <meta name="description" content="{{ seo.description }}">
+    <meta property=”og:title” content={{seo.title}}/>
+    <meta property="og:description" content="{{ seo.description }}">
+    <meta name="description" content="{{seo.description}}">
+    <meta name="keywords" content="simplefatty,AngularJS,Web前端,自动化构建">
     <base href="/">
     <!-- Browser-360 speed mode is enabled (webkit) -->
     <meta name="renderer" content="webkit">
