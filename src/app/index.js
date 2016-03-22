@@ -8,8 +8,7 @@
 		'sf_blog.main',
 		'sf_blog.article',
 		'sf_blog.resources',
-		'sf_blog.directive',
-		'sf_blog.service'
+		'sf_blog.directive'
 	])
 	.config(Appconfig)
 	.run(Apprun)
@@ -17,10 +16,8 @@
 	Appconfig.$inject=['$logProvider','$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 'IsDebug']
 
 	function Appconfig($logProvider,$stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, IsDebug) {
+	  
 	  $locationProvider.html5Mode(true);
-	  $httpProvider.defaults.timeout = 500000;
-	  $httpProvider.defaults.withCredentials = true;
-	  $httpProvider.interceptors.push('AuthInterceptor');
 	  // Enable log
 	  $logProvider.debugEnabled(IsDebug);
 	  $locationProvider.hashPrefix('!');
@@ -30,6 +27,8 @@
 	Apprun.$inject=['$window','$document','$rootScope','$location','$injector','$timeout'];
 
 	function Apprun($window,$document,$rootScope,$location,$injector,$timeout){
+
+		$window.prerenderReady = false;
 
 		$rootScope.$on('$stateChangeSuccess',function(event,current){
 			if(current&&(current.$$route||current).redirectTo){

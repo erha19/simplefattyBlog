@@ -5,8 +5,8 @@
 	.directive('scrollHidden', ['$timeout', "$window", "$document", function($timeout, $window, $document) {
 		return {
 			restrict: 'AE',
-			controller:navbarCtroller,
-			controllerAs:'navbarCtrl',
+			controller: navbarCtroller,
+			controllerAs: 'navbarCtrl',
 			link: function(scope, element, attrs) {
 				var beforeScrollTop = document.body.scrollTop,
 					afterScrollTop, delta, timer = null;
@@ -16,7 +16,7 @@
 						$timeout.cancel(timer)
 					}
 					afterScrollTop = document.body.scrollTop;
-					if (afterScrollTop >100) {
+					if (afterScrollTop > 100) {
 						delta = afterScrollTop - beforeScrollTop;
 						if (delta < 0) {
 							timer = $timeout(function() {
@@ -28,24 +28,24 @@
 								scope.state = false;
 							}, 200, true)
 						}
-					}
-					else{
+					} else {
 						timer = $timeout(function() {
-								scope.state = true;
-							}, 200, true)
+							scope.state = true;
+						}, 200, true)
 					}
 					beforeScrollTop = angular.copy(afterScrollTop)
 				});
 			}
 		}
 	}])
-	.controller('navbarCtroller',navbarCtroller)
 
-	navbarCtroller.$inject=['$scope','$state']
+	.controller('navbarCtroller', navbarCtroller)
 
-	function navbarCtroller($scope,$state){
-		var vm=this;
+	navbarCtroller.$inject = ['$scope', '$state']
+
+	function navbarCtroller($scope, $state) {
+		var vm = this;
 	}
 
-	
+
 })();
