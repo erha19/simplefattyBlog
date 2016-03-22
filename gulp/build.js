@@ -44,7 +44,7 @@ gulp.task('html',['inject','partials'],function () {
 	var jsFilter = $.filter('**/*.js',{restore: true});
 	var cssFilter = $.filter('**/*.css',{restore: true});
 
-	return gulp.src(path.join(config.paths.tmp, '/serve/*.html'))
+	return gulp.src(path.join(config.paths.tmp, '/serve/index.html'))
 		//自动处理全部错误信息防止因为错误而导致 watch 不正常工作
 		.pipe($.plumber(config.errorHandler()))
 		//注入angular模板文件
@@ -66,7 +66,8 @@ gulp.task('html',['inject','partials'],function () {
 		.pipe($.csso())
 		.pipe(cssFilter.restore)
 		//md5后缀
-		.pipe($.rev())
+		.pipe($.if('*.css', $.rev()))
+		.pipe($.if('*.js', $.rev()))
 		//替换md5后缀的文件名
 		.pipe($.revReplace())
 		//html处理
@@ -82,13 +83,7 @@ gulp.task('html',['inject','partials'],function () {
 		.pipe($.size({ title: path.join(config.paths.dist, '/'), showFiles: true }));
 
 });
-/*****************html end*********************/
 
-gulp.task('renameIndex',function(){
-	return gulp.src([path.join(config.paths.dist,'/*.html')])
-		   .pipe($.rename('index.html'))
-		   .pipe(gulp.dest(config.paths.dist))
-})
 /**
  * images zip
  */
@@ -111,9 +106,8 @@ gulp.task('images',function () {
  */
 gulp.task('other',function () {
 	return gulp.src([
-			path.join(config.paths.src,'/**/*'),
-			path.join('!' + config.paths.src, '/assets/images/**/*'),
-			path.join('!' + config.paths.src, '/**/*.{html,js,css,scss}')
+			path.join(config.paths.src,'/*.{xml,html,ico}'),
+			path.join('!' + config.paths.src, '/index.html')
 		])
 		.pipe($.filter(function (file) {
 			return file.stat.isFile();
@@ -122,5 +116,5 @@ gulp.task('other',function () {
 });
 
 
-gulp.task('build',$.sequence('prod-config',['clean:dist','html'],['images','renameIndex'],'other'));
-gulp.task('build:e2e',$.sequence('test-config',['clean:dist','html'],['images','renameIndex'],'other'));
+gulp.task('build',$.sequence('prod-config',['clean:dist','html'],['images'],'other'));
+gulp.task('build:e2e',$.sequence('test-config',['clean:dist','html'],['images'],'other'));
