@@ -60,7 +60,7 @@ gulp.task('html',['inject','partials'],function () {
 		//css处理
 		.pipe(cssFilter)
 		.pipe($.autoprefixer({
-            browsers: ['last 20 versions', 'Android >= 4.0'],
+            browsers: ['last 5 versions', 'Android >= 4.0'],
         }))
 		.pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
 		.pipe($.csso())
