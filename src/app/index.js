@@ -28,8 +28,6 @@
 
 	function Apprun($window,$document,$rootScope,$location,$injector,$timeout){
 
-		$window.prerenderReady = false;
-
 		$rootScope.$on('$stateChangeSuccess',function(event,current){
 			if(current&&(current.$$route||current).redirectTo){
 				return ;
