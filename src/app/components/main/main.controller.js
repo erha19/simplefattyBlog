@@ -1,7 +1,11 @@
 (function() {
     'use strict';
     angular.module('sf_blog.main')
-        .filter('dataFilter',function(){
+        .filter('dataFilter',DataFilter)
+
+        .controller('MainController',MainController)
+
+        function DataFilter(){
             return function(input,params){
                 var date=new Date(input),
                     year=date.getFullYear(),
@@ -11,8 +15,11 @@
                     day=day>9?day:'0'+day;
                 return year+'.'+month+'.'+day
             }
-        })
-        .controller('MainController', ['$scope', '$timeout', 'Blog', 'Tags', 'EVENT','$window', function($scope, $timeout, Blog, Tags, EVENT,$window) {
+        }
+        
+        MainController.$inject=['$scope', '$timeout', 'Blog', 'Tags', 'EVENT','$window']
+
+        function MainController($scope, $timeout, Blog, Tags, EVENT,$window) {
             var tagListName = {},
                 tagArray = [];
 
@@ -90,5 +97,5 @@
                     loadingArtical($scope.options);
                 }
             })
-        }])
+        }
 })();

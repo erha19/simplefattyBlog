@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
 @import "./base.scss";
@@ -7,6 +9,8 @@
 @import "./components/article/artical.scss";
 
 @import "./components/navbar/navbar.scss";
+
+@import "./components/main/main.scss";
 
 @import "./components/comment/comment.scss";
 

@@ -1,7 +1,14 @@
 (function() {
     'use strict';
-    angular.module('sf_blog.article')
-        .controller('ArticleCtrl', ['$rootScope', '$scope', '$state', 'Blog','actical', '$stateParams', '$location','$timeout','$window', function($rootScope, $scope, $state, Blog, actical,$stateParams, $location,$timeout,$window) {
+        
+        angular.module('sf_blog.article')
+        
+
+        .controller('ArticleCtrl', ArticleCtrl)
+
+        ArticleCtrl.$inject=['$rootScope', '$scope', '$state', 'Blog','actical', '$stateParams', '$location','$timeout','$window']
+
+        function ArticleCtrl($rootScope, $scope, $state, Blog, actical,$stateParams, $location,$timeout,$window) {
             var vm=this;
             vm.common={
                 aid:$stateParams.aid,
@@ -15,20 +22,6 @@
             }).then(function(result) {
                 vm.article = actical;
                 $window.prerenderReady = true;
-            }).then(function() {
-                var options = {
-                    id: vm.common.aid,
-                    sortName: 'publish_time',
-                    tagId: ''
-                };
-
-                Blog.getPrenext(options).then(function(result) {
-                    vm.next = result.data.next || {};
-                    vm.prev = result.data.prev || {};
-                });
-            }).catch(function() {
-                $state.go('home');
-            });
-
-        }])
+            })
+        }
 })();

@@ -33,11 +33,7 @@ $navbarDefaultColor:#666565;
 $navHoverBgColor: #009688;
 $navActiveColor:#009688;
 
-/**
- * container
- */
-$containerBgColor:#fff;
-$containerBorderColor:rgba(0,0,0,.1);
+
 
 body{
 	margin:0;
@@ -51,7 +47,9 @@ body{
     	background-color:$navBgColor;
     }
 }
-
+h1{
+	font-size:1em;
+}
 pre{
 	background-color:#fff;
 }
@@ -60,6 +58,18 @@ ul,li{
 	margin:0;
 	padding:0;
 	list-style:none;
+}
+h1,p{
+	margin:0;
+	padding:0;
+}
+a{
+	color: $navActiveColor;
+	text-decoration:none;
+	&:hover,&:active,&:visited,&:focus{
+		text-decoration:none;
+		color: $navActiveColor;
+	}
 }
 /* Let's get this party started */
 ::-webkit-scrollbar {
@@ -79,178 +89,12 @@ ul,li{
 	background: $navActiveColor;             
 }
 
-/**
- * container
- */
-.sf_container{
-	background-color:$containerBgColor;
+.wrap{
 	width:100%*10/12;
-	margin:0 auto;
-	@media screen and (max-width: 480px){
-		width: 100%;
-		padding:10px;
-	}
+	margin-left:100%*1/12;
+	position:relative;
 }
-.notfound{
-	width: 100%;
-	p{
-		line-height: 80px;
-		font-size: 16px;
-		text-align:center;
-		margin-top: 10px;
-		color:#8C8B8B;
-	}
-	ul{
-		width: 100%;
-		max-width: 633px;
-		margin:0 auto;
-		li{
-			padding:5px 10px;
-			float: left;
-			margin:10px 10px;
-			border:1px solid #DDD;
-			transition: all .2s ease;
-			cursor: pointer;
-			&:hover{
-				color:$navHoverBgColor;
-				border:1px solid $navHoverBgColor;
-			}
-		}
-	}
-}
-.sf_artical_item{
-	margin-top:20px;
-	margin-bottom:10px;
-	padding:10px;
-	border:1px solid $containerBorderColor;
-	@media screen and (max-width: 480px){
-		margin-top:0;
-		border-width:0;
-		margin-bottom:0;
-	}
-	.artical_title{
-		display: block;
-		width: 100%;
-		font-size: 1.3em;
-		line-height: 1.5em;
-		color:$basebodyColor;
-		cursor: pointer;
-		margin: .67em 0;
-		&:hover{
-			text-decoration: none;
-			span,i{
-				opacity: 1;
-			}
-		}
-		&:hover,&:active,&:visited,&:focus{
-			color:$basebodyColor;
-			text-decoration: none;
-		}
-		@media screen and(max-width:480px){
-			height: 1.5em;
-			display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-		}
-	}
-	img{
-		width: 100%;
-		cursor: pointer;
-	}
-	
-	span,i{
-		display: inline-block;
-		font-size:16px;
-		font-style: normal;
-		padding-left:20px;
-		background-repeat:no-repeat;
-		height: 14px;
-		margin:5px;
-		opacity: 0;
-		transition: all .2s ease;
-	}
-	p{
-		line-height: 25px;
-		color:#636262;
-		position: relative;
-		@media screen and (max-width: 480px){
-			max-height: 50px;
-			overflow: hidden;
-			padding-bottom:10px;
-		}
-	}
 
-	.artical_tag{
-		height: 30px;
-		width: 100%;
-		position: relative;
-		cursor: pointer;
-		&:hover>.taglist{
-			opacity: 1;
-		}
-		.taglist{
-			opacity: 0;
-			transition: all .2s ease;
-			position:absolute;
-			top: -206px;
-			left: -115px;
-			margin:0;
-			padding:0;
-			
-			list-style: none;
-			border:1px solid #DDD;
-			li{
-				border-bottom:1px solid #DDD;
-				width: 100px;
-				line-height: 40px;
-				text-align: center;
-				height: 40px;
-				color:#565353;
-				&:hover{
-					color:#333;
-				}
-			}
-			&:before{
-				position:absolute;
-				display: block;
-				top: 214px;
-				right: -11px;
-				width: 0;
-			    height: 0;
-			    border-top: 5px solid transparent;
-			    border-left: 10px solid #DDD;
-			    border-bottom: 5px solid transparent;
-			}
-			&:after{
-				position:absolute;
-				display: block;
-				top: 214px;
-				right: -10px;
-				width: 0;
-			    height: 0;
-			    border-top: 5px solid transparent;
-			    border-left: 10px solid #fff;
-			    border-bottom: 5px solid transparent;
-			}
-			&>li:last-child{
-				border-width:0;
-			}
-		}
-		.tag,.time{
-			float: left;
-			display: inline-block;
-			font-size:16px;
-			font-style: normal;
-			padding-left:20px;
-			background-repeat:no-repeat;
-			background-attachment:center;
-			height: 16px;
-			line-height: 16px;
-			margin:5px;
-		}
-		.tag{
-			margin-left: 0;
-		}
-	}
-}
 /**
  * footer
  */
@@ -258,6 +102,7 @@ ul,li{
 	width:100%;
 	height:30px;
 	margin:15px 0;
+	font-size:14px;
 	line-height:30px;
 	text-align:center;
 	a{

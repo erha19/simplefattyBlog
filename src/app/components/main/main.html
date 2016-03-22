@@ -1,5 +1,5 @@
     <sf-banner class='slide-top'></sf-banner>
-    <div class="sf_container" lazy-container>
+    <div class="sf_container wrap" lazy-container>
         <div class="notfound slide-top" ng-if='blogList.length<1&&!isLoading'>
             <p>暂无该标签内的文章哦</p>
             <ul class="clearfix">
@@ -7,7 +7,7 @@
             </ul>
         </div>
         <div class="row slide-top" data-ng-repeat="blog in blogList">
-            <div class="col-sm-offset-1 col-sm-10 sf_artical_item">
+            <div class="sf_artical_item">
                 <img ui-sref="article({aid:blog._id})" lazy-src="{{blog.image}}" class="img-responsive" animate-visible="true" animate-speed="0.5s" alt="{{::blog.title}}">    
                 <a class='artical_title' ui-sref="article({aid:blog._id})">
                     {{::blog.title}}
