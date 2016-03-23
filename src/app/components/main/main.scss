@@ -123,6 +123,9 @@ $containerBorderColor:rgba(0,0,0,.1);
 			
 			list-style: none;
 			border:1px solid #DDD;
+			@media screen and (max-width: 480px){
+				display: none;
+			}
 			li{
 				border-bottom:1px solid #DDD;
 				width: 100px;
