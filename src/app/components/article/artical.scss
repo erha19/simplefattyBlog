@@ -10,6 +10,7 @@ $baseFontFamily:"Microsoft YaHei", "SimHei", "Arial Unicode MS";
 	background-color:$baseBgColor;
 	@media screen and (max-width: 480px){
 		padding:20px;
+		width:100%;
 	}
 	.markdown{
 		overflow: hidden;
