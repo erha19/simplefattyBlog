@@ -93,6 +93,10 @@ a{
 	width:100%*10/12;
 	margin-left:100%*1/12;
 	position:relative;
+	@media screen and (max-width: 480px){
+		margin-left:0;
+		width: 100%;
+	}
 }
 
 /**
