@@ -1,29 +1,23 @@
 {
   "development": {
-    "ServerUrl": "/api",
-    "IsDebug":true,
-    "CookieConfig":{
-      "domain":""
-    },
+    "serverUrl": "/api",
+    "isDebug":true,
     "EVENT":{
       "NeedToLoad":"need-to-load"
     }
   },
   "production": {
-    "ServerUrl": "/api",
-    "IsDebug":false,
-    "CookieConfig":{
-      "domain":"sf_blog"
-    },
+    "serverUrl": "/api",
+    "isDebug":false,
     "EVENT":{
       "NeedToLoad":"need-to-load"
     }
   },
   "test": {
-    "ServerUrl": "http://localhost:8080",
-    "IsDebug":false,
-    "CookieConfig":{
-      "domain":""
+    "serverUrl": "http://localhost:8080",
+    "isDebug":false,
+    "EVENT":{
+      "NeedToLoad":"need-to-load"
     }
   }
 }

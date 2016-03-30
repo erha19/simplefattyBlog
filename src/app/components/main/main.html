@@ -1,28 +1,26 @@
+<div>
     <sf-banner class='slide-top'></sf-banner>
     <div class="sf_container wrap" lazy-container>
         <div class="notfound slide-top" ng-if='blogList.length<1&&!isLoading'>
             <p>暂无该标签内的文章哦</p>
             <ul class="clearfix">
-                <li data-ng-repeat="tag in tagList" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
+                <li data-ng-repeat="tag in tagList track by $index" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
             </ul>
         </div>
-        <div class="row slide-top" data-ng-repeat="blog in blogList">
+        <div class="row slide-top" data-ng-repeat="blog in blogList track by $index">
             <div class="sf_artical_item">
-                <img ui-sref="article({aid:blog._id})" lazy-src="{{blog.image}}" class="img-responsive" animate-visible="true" animate-speed="0.5s" alt="{{::blog.title}}">    
-                <a class='artical_title' ui-sref="article({aid:blog._id})">
-                    {{::blog.title}}
-                </a>
+                <img ui-sref="article({aid:blog._id})" lazy-src="{{blog.image}}" class="img-responsive" animate-visible="true" animate-speed="0.5s" alt="{{::blog.title}}">
+                <a class='artical_title' ui-sref="article({aid:blog._id})">{{::blog.title}}</a>
                 <div class="artical_tag">
                     <ul class="taglist clearfix">
-                        <li data-ng-repeat="tag in tagList" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
+                        <li data-ng-repeat="tag in tagList track by $index" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
                     </ul>
                     <div class="tag icon-tag" data-ng-bind="::blog.tagName"></div>
                     <div class="time icon-time" data-ng-bind="::blog.publish_time|dataFilter"></div>
                 </div>
-                <p data-ng-bind="::blog.introduce">
-                    
-                </p>
+                <p data-ng-bind="::blog.introduce"></p>
             </div>
         </div>
-        <sf-loading class='loading' ng-show='isLoading' load-more=''></sf-loading>  
+        <sf-loading class='loading' ng-show='isLoading' load-more=''></sf-loading>
     </div>
+</div>

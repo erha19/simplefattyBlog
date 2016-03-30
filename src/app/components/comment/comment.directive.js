@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('sf_blog.article')
+	angular.module('sf_blog')
 
 	.directive("comment", function() {
 		return {

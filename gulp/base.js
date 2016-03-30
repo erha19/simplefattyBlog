@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
     path = require('path'),
+    fs = require('fs'),
     config = require('./config'),
     _ = require('lodash'),
     wiredep = require('wiredep').stream,
@@ -9,13 +10,27 @@ var gulp = require('gulp'),
       pattern: ['gulp-*', 'event-stream', 'main-bower-files', 'uglify-save-license', 'del']
     }),
     browserSync = require('browser-sync'),
+    gulpsync    = $.sync(gulp),
     reload      = browserSync.reload;
 
-
+// VENDOR CONFIG
+var vendor = {
+  // vendor scripts required to start the app
+  base: {
+    source: require('../vendor.base.json'),
+    dest: 'src/app',
+    name: 'vendor'
+  },
+  // vendor scripts to make the app work. Usually via lazy loading
+  app: {
+    source: require('../vendor.json'),
+    dest: 'src/vendor'
+  }
+};
 
 gulp.task('dev-config',function () {
   return gulp.src('app.conf.json')
-        .pipe($.ngConfig('sf_blog',{
+        .pipe($.ngConfig(config.modules.ConstantModuleName,{
           environment: 'development',
           createModule: false,
           wrap: true
@@ -24,7 +39,7 @@ gulp.task('dev-config',function () {
 });
 gulp.task('prod-config',function () {
   return gulp.src('app.conf.json')
-        .pipe($.ngConfig('sf_blog',{
+        .pipe($.ngConfig(config.modules.ConstantModuleName,{
           environment: 'production',
           createModule: false,
           wrap: true
@@ -87,6 +102,10 @@ gulp.task('styles:compass',['inject_sass'],function () {
 		}))
 		//sprite图片路径修复
 		.pipe($.replace('../../../src/assets/images/', '../assets/images/'))
+    .pipe($.autoprefixer({
+      browsers: ['last 20 versions'],
+      cascade: false
+    }))
 		.pipe(gulp.dest(path.join(config.paths.tmp,'/serve/app/')))
 		//css改变时无刷新改变页面
 		.pipe(reload({ stream: true }));
@@ -94,14 +113,14 @@ gulp.task('styles:compass',['inject_sass'],function () {
 /*****************CSS(COMPASS编译) end*********************************************/
 
 /*****************inject(css,js注入html) start***************************/
-gulp.task('inject', ['jshint', 'styles:compass'], function () {
+gulp.task('inject', ['jshint', 'styles:compass','vendor:base'], function () {
   var injectStyles = gulp.src([
-    path.join(config.paths.tmp, '/serve/app/**/*.css'),
-    path.join('!' + config.paths.tmp, '/serve/app/vendor.css')
+    path.join(config.paths.tmp, '/serve/app/**/*.css')
   ], { read: false });
 
   var injectScripts = gulp.src([
-    path.join(config.paths.src, '/app/**/*.js')
+    path.join(config.paths.src, '/app/**/*.js'),
+    path.join('!' +config.paths.src, '/app/vendor.js'),
   ]).pipe($.angularFilesort());
 
   var injectOptions = {
@@ -115,9 +134,39 @@ gulp.task('inject', ['jshint', 'styles:compass'], function () {
 		  injectStyles,
 		  injectScripts
 		),injectOptions))
-		.pipe(wiredep(_.extend({}, config.wiredep)))
 	  .pipe(gulp.dest(path.join(config.paths.tmp, '/serve')));
 
 });
 /*****************inject(css,js注入html) end*********************************************/
+gulp.task('vendor', gulpsync.sync(['vendor:base', 'vendor:app']) );
 
+
+gulp.task('vendor:base', function() {
+    var jsFilter = $.filter('**/*.js',{restore: true}),
+  	    cssFilter = $.filter('**/*.css',{restore: true});
+    return gulp.src(vendor.base.source,{base: 'bower_components'})
+        .pipe($.expectFile(vendor.base.source))
+        .pipe(jsFilter)
+        .pipe($.concat(vendor.base.name+'.js'))
+      	.pipe(jsFilter.restore)
+      	.pipe(cssFilter)
+      	.pipe($.concat(vendor.base.name+'.scss'))
+      	.pipe(cssFilter.restore)
+        .pipe(gulp.dest(vendor.base.dest))
+        ;
+});
+
+gulp.task('vendor:app', function() {
+
+  var jsFilter = $.filter('*.js',{restore: true}),
+      cssFilter = $.filter('*.css',{restore: true});
+
+  return gulp.src(vendor.app.source, {base: 'bower_components'})
+      .pipe($.expectFile(vendor.app.source))
+      .pipe(jsFilter)
+      .pipe(jsFilter.restore)
+      .pipe(cssFilter)
+      .pipe(cssFilter.restore)
+      .pipe(gulp.dest(vendor.app.dest) );
+
+});

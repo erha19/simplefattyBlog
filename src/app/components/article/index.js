@@ -1,27 +1,38 @@
 (function() {
     'use strict';
-    angular.module('sf_blog.article', [])
-        .config(['$stateProvider', function($stateProvider) {
-        
+    angular.module('sf_blog')
+
+        .config(['$stateProvider','RouteHelpersProvider', function($stateProvider,helper) {
+
             $stateProvider
                 .state('article', {
                     url: '/article/:aid',
-                    templateUrl: 'app/components/article/article.html',
-                    controller: 'ArticleCtrl',
-                    controllerAs:'artical',
-                    resolve:{
-                        actical:['$stateParams','$rootScope','Blog',function($stateParams,$rootScope,Blog){
-                            return Blog.getFrontArticle({
+                    template: '<article-content></article-content>',
+                    resolve: {
+                        article: ['$stateParams', '$rootScope', 'Api', function($stateParams, $rootScope, Api) {
+                            return Api.Article.getFrontArticle({
                                 id: $stateParams.aid
-                            }).then(function (response) {
-                                $rootScope.actical={
-                                    title:response.data.title,
-                                    description:response.data.introduce
+                            }).$promise.then(function(response) {
+                                $rootScope.artical = {
+                                    title: response.data.title,
+                                    description: response.data.introduce
                                 }
                                 return response.data;
                             });
-                    }]}
+                        }]
+                    },
+                    controller: ArticleMidewaerCtrl
                 });
 
         }])
+
+    ArticleMidewaerCtrl.$inject = ['$rootScope', '$scope', 'article']
+
+    function ArticleMidewaerCtrl($rootScope, $scope, article) {
+        
+
+        $scope.article = article;
+    }
+
+
 })();

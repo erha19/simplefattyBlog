@@ -5,9 +5,7 @@
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: 'app/components/main/main.html',
-                    controller: 'MainController',
-                    controllerAs: 'main',
+                    template: '<homepage></homepage>',
                     title:'Simplefatty | 首页',
                     description:'Simplefatty的个人博客'
                 });

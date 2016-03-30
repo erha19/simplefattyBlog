@@ -11,9 +11,22 @@ var $ = require('gulp-load-plugins')({
 gulp.task('clean:dist', function () {
   $.del([path.join(config.paths.dist, '/')]);
 });
-/*****************angular模板合成JS start*********************************************/
-//https://github.com/murphydanger/gulp-minify-html
-//只有在build的时候才需要
+// VENDOR CONFIG
+var vendor = {
+  // vendor scripts required to start the app
+  base: {
+    source: require('../vendor.base.json'),
+    dest: 'src/app',
+    name: 'vendor'
+  },
+  // vendor scripts to make the app work. Usually via lazy loading
+  app: {
+    source: require('../vendor.json'),
+    dest: 'src/vendor'
+  }
+};
+/*****************angular template start*********************************************/
+
 gulp.task('partials', function () {
   return gulp.src([
     path.join(config.paths.src, '/app/**/*.html')
@@ -24,14 +37,14 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'sf_blog',
+      module: config.modules.templateModuleName,
       root: 'app'
     }))
     .pipe(gulp.dest(config.paths.tmp + '/partials/'));
 });
-/*****************angular模板合成JS end*********************************************/
+/*****************angular template end*********************************************/
 
-/*****************html(压缩合并js,css,html) start*********************/
+/*****************concat (js,css,html)*********************/
 gulp.task('html',['inject','partials'],function () {
 	var partialsInjectFile = gulp.src(path.join(config.paths.tmp, '/partials/templateCacheHtml.js'), { read: false });
 	var partialsInjectOptions = {
@@ -45,24 +58,22 @@ gulp.task('html',['inject','partials'],function () {
 	var cssFilter = $.filter('**/*.css',{restore: true});
 
 	return gulp.src(path.join(config.paths.tmp, '/serve/index.html'))
-		//自动处理全部错误信息防止因为错误而导致 watch 不正常工作
+		//error 
 		.pipe($.plumber(config.errorHandler()))
-		//注入angular模板文件
+		//inject template
 		.pipe($.inject(partialsInjectFile,partialsInjectOptions))
-		//js处理
+		//js
 		.pipe($.useref())
 		.pipe(jsFilter)
-		// .pipe($.scripDebug())
-		.pipe($.ngAnnotate())
-		//.pipe($.uglify({ preserveComments: $.uglifySaveLicense }))
+		.pipe($.stripDebug())
 		.pipe($.uglify())
 		.pipe(jsFilter.restore)
-		//css处理
+		//css 
 		.pipe(cssFilter)
 		.pipe($.autoprefixer({
-            browsers: ['last 20 versions', 'Android >= 4.0'],
-        }))
-		.pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
+			browsers: ['last 20 versions'],
+			cascade: false
+		}))
 		.pipe($.csso())
 		.pipe(cssFilter.restore)
 		//md5后缀
@@ -84,6 +95,9 @@ gulp.task('html',['inject','partials'],function () {
 
 });
 
+
+/*****************concat (js,css,html) end*********************/
+
 /**
  * images zip
  */
@@ -100,21 +114,35 @@ gulp.task('images',function () {
 		.pipe(gulp.dest(path.join(config.paths.dist,'/assets/images')));
 });
 
-
+gulp.task('fonts',function () {
+		
+	return gulp.src(vendor.base.source,{base: 'bower_components'})
+        .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
+		.pipe($.flatten())
+		.pipe(gulp.dest(path.join(config.paths.dist,'/fonts/')));
+});
 /**
  * copy file
  */
-gulp.task('other',function () {
+gulp.task('other:vendor',function () {
 	return gulp.src([
-			path.join(config.paths.src,'/*.{xml,html,ico}'),
-			path.join('!' + config.paths.src, '/index.html')
+			path.join(config.paths.src, '/vendor/**/*')
 		])
 		.pipe($.filter(function (file) {
 			return file.stat.isFile();
 		}))
-		.pipe(gulp.dest(path.join(config.paths.dist,'/')));
+		.pipe(gulp.dest(path.join(config.paths.dist,'/vendor')));
+});
+gulp.task('other:assets',function () {
+	return gulp.src([
+			path.join(config.paths.src, '/app/assets/**/*')
+		])
+		.pipe($.filter(function (file) {
+			return file.stat.isFile();
+		}))
+		.pipe(gulp.dest(path.join(config.paths.dist,'/assets')));
 });
 
 
-gulp.task('build',$.sequence('prod-config',['clean:dist','html'],['images'],'other'));
-gulp.task('build:e2e',$.sequence('test-config',['clean:dist','html'],['images'],'other'));
+gulp.task('build',$.sequence('prod-config',['clean:dist','html'],['images','fonts'],'other:vendor','other:assets'));
+gulp.task('build:e2e',$.sequence('test-config',['clean:dist','html'],['images','fonts'],'other:vendor','other:assets'));
