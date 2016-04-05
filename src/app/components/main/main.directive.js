@@ -103,13 +103,13 @@
 						$scope.blogList = $scope.blogList.concat(result.data);
 					}
 					$scope.isLoading = false;
-					$timeout(function(){$window.prerenderReady = true;},2000,true)
 				}, 100, true)
 			}).catch(function() {
 				$scope.isLoading = false;
 				$scope.blogList = [];
 			});
 		}
+		$timeout(function(){window.prerenderReady = true;},2000,true)
 		$scope.$on(EVENT.NeedToLoad, function() {
 			if (timer)
 				$timeout.cancel(timer)
