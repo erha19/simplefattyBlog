@@ -26,6 +26,8 @@
             }
             $timeout(function(){vm.article = $scope.article;},0,true)
 
+            //prerender
+            $timeout(function(){window.prerenderReady = true;},1000,true)
         }
 
 })();

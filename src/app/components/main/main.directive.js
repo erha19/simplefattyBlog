@@ -104,11 +104,13 @@
 					}
 					$scope.isLoading = false;
 				}, 100, true)
+				$timeout(function(){window.prerenderReady = true;},1000,true)
 			}).catch(function() {
 				$scope.isLoading = false;
 				$scope.blogList = [];
 			});
 		}
+		
 		$scope.$on(EVENT.NeedToLoad, function() {
 			if (timer)
 				$timeout.cancel(timer)
