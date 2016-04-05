@@ -23,9 +23,7 @@
     <!-- endinject -->
     <!-- endbuild -->
 
-    <script type="text/javascript">
-        window.prerenderReady = false;
-    </script>
+    <script> window.prerenderReady = false; </script>
 </head>
 
 <body>
@@ -33,7 +31,6 @@
     <div ui-view></div>
     <sf-footer></sf-footer>
 </body>
-
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <script src="app/vendor.js"></script>
     <!-- inject:js -->

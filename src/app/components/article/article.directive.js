@@ -27,7 +27,7 @@
             $timeout(function(){vm.article = $scope.article;},0,true)
 
             //prerender
-            $window.prerenderReady = true;
+            $timeout(function(){$window.prerenderReady = true;},500)
         }
 
 })();
