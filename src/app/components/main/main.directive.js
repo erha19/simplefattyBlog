@@ -109,7 +109,6 @@
 				$scope.blogList = [];
 			});
 		}
-		$timeout(function(){window.prerenderReady = true;},10000,true)
 		$scope.$on(EVENT.NeedToLoad, function() {
 			if (timer)
 				$timeout.cancel(timer)
