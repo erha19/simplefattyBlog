@@ -1,122 +1,139 @@
 @import "compass/utilities/sprites";
+
 $sort-spacing: 20px;
 $sort-layout: vertical;
+
 @import "icon/*.png";
+
 @include all-icon-sprites;
+
 /**
  * base
  */
-$basebodyBgColor:#fff;
-$basebodyColor:#333;
+$basebodyBgColor: #fff;
+$basebodyColor: #333;
 
-$baseFontFamily:"Microsoft YaHei", "SimHei", "Arial Unicode MS";
-$baseBgColor:white;
+$baseFontFamily: "Microsoft YaHei", "SimHei", "Arial Unicode MS";
+$baseBgColor: white;
+
 /**
  * logo-size
  */
-$logoHeight:100px;
-$logoWidth:100px;
-$logoPhoneSize:60px;
+$logoHeight: 100px;
+$logoWidth: 100px;
+$logoPhoneSize: 60px;
+
 /**
  * navbar
  */
 
-$navbarBorderColor:rgba(0,0,0,.13);
-$navbarHeight:60px;
-$navbarPhoneHeight:50px;
+$navbarBorderColor: rgba(0, 0, 0, 0.13);
+$navbarHeight: 60px;
+$navbarPhoneHeight: 50px;
 
-
-$navbarSize:16px;
+$navbarSize: 16px;
 $navBgColor: white;
 
-$navbarDefaultColor:#666565;
+$navbarDefaultColor: #666565;
 $navHoverBgColor: #009688;
-$navActiveColor:#009688;
+$navActiveColor: #009688;
 
-
-
-body{
-	margin:0;
-	padding:0;
-	font-family:$baseFontFamily;
-	color:$basebodyColor;
-	background-color:$basebodyBgColor;
-	overflow-y: scroll;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $baseFontFamily;
+    color: $basebodyColor;
+    background-color: $basebodyBgColor;
+    overflow-y: scroll;
     overflow-x: hidden;
-    @media screen and (max-width: 480px){
-    	background-color:$navBgColor;
+
+    @media screen and (max-width: 480px) {
+        background-color: $navBgColor;
     }
 }
-h1{
-	font-size:1em;
+
+h1 {
+    font-size: 1em;
 }
-pre{
-	background-color:#fff;
+
+pre {
+    background-color: #fff;
 }
-img { max-width:100%;}
-ul,li{
-	margin:0;
-	padding:0;
-	list-style:none;
+
+img {
+    max-width: 100%;
 }
-h1,p{
-	margin:0;
-	padding:0;
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
-a{
-	color: $navActiveColor;
-	text-decoration:none;
-	&:hover,&:active,&:visited,&:focus{
-		text-decoration:none;
-		color: $navActiveColor;
-	}
+
+h1, p {
+    margin: 0;
+    padding: 0;
 }
+
+a {
+    color: $navActiveColor;
+    text-decoration: none;
+
+    &:hover, &:active, &:visited, &:focus {
+        text-decoration: none;
+        color: $navActiveColor;
+    }
+}
+
 /* Let's get this party started */
 ::-webkit-scrollbar {
-    width:10px;
+    width: 10px;
 }
-            
-/* Track */
-::-webkit-scrollbar-track {
 
-}
-            
+/* Track */
+::-webkit-scrollbar-track {}
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background:$navActiveColor;             
-}
-::-webkit-scrollbar-thumb:window-inactive {
-	background: $navActiveColor;             
+    background: $navActiveColor;
 }
 
-.wrap{
-	width:100%*10/12;
-	margin-left:100%*1/12;
-	position:relative;
-	@media screen and (max-width: 480px){
-		margin-left:0;
-		width: 100%;
-	}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: $navActiveColor;
+}
+
+.wrap {
+    width: 100% * 10 / 12;
+    margin-left: 100% * 1 / 12;
+    position: relative;
+
+    @media screen and (max-width: 480px) {
+        margin-left: 0;
+        width: 100%;
+    }
 }
 
 /**
  * footer
  */
-.sf_footer{
-	width:100%;
-	height:30px;
-	margin:15px 0;
-	font-size:14px;
-	line-height:30px;
-	text-align:center;
-	a{
-		color:#333;
-		&:hover{
-			text-decoration: none;
-			color:#333;
-		}
-	}
-	@media screen and (max-width: 480px){
-		font-size: 12px;
-	}
+.sf_footer {
+    width: 100%;
+    height: 30px;
+    margin: 15px 0;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+
+    a {
+        color: #333;
+
+        &:hover {
+            text-decoration: none;
+            color: #333;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        font-size: 12px;
+    }
 }

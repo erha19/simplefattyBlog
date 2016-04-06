@@ -1,139 +1,159 @@
+$basebodyBgColor: #f8f8f8;
+$basebodyColor: #333;
 
-$basebodyBgColor:#f8f8f8;
-$basebodyColor:#333;
+$baseFontFamily: "Microsoft YaHei", "SimHei", "Arial Unicode MS";
+$baseBgColor: white;
 
-$baseFontFamily:"Microsoft YaHei", "SimHei", "Arial Unicode MS";
-$baseBgColor:white;
 /**
  * logo-size
  */
-$logoHeight:100px;
-$logoWidth:100px;
-$logoPhoneSize:60px;
+$logoHeight: 100px;
+$logoWidth: 100px;
+$logoPhoneSize: 60px;
+
 /**
  * navbar
  */
 
-$navbarBorderColor:rgba(0,0,0,.13);
-$navbarHeight:60px;
-$navbarPhoneHeight:50px;
+$navbarBorderColor: rgba(0, 0, 0, 0.13);
+$navbarHeight: 60px;
+$navbarPhoneHeight: 50px;
 
-
-$navbarSize:16px;
+$navbarSize: 16px;
 $navBgColor: white;
 
-$navbarDefaultColor:#666565;
+$navbarDefaultColor: #666565;
 $navHoverBgColor: #009688;
-$navActiveColor:#009688;
+$navActiveColor: #009688;
 
 /**
  * container
  */
-$containerBgColor:#fefdfd;
-$containerBorderColor:rgba(0,0,0,.1);
+$containerBgColor: #fefdfd;
+$containerBorderColor: rgba(0, 0, 0, 0.1);
+
 /**
  * header-style
  */
 
-.sf_navbar{
-	height:$navbarHeight;
-	width:100%;
-	background-color:$baseBgColor;
-	position:fixed;
-	top:0;
-	left:0;
-	z-index:999;
-	border-bottom:1px solid $navbarBorderColor;
-	transition:all ease .25s;
-	@media screen and (max-width: 480px){
-		height:50px;
-	}
-	.container{
-		position:relative;
-	}
+.sf_navbar {
+    height: $navbarHeight;
+    width: 100%;
+    background-color: $baseBgColor;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    border-bottom: 1px solid $navbarBorderColor;
+    transition: all ease .25s;
+
+    @media screen and (max-width: 480px) {
+        height: 50px;
+    }
+
+    .container {
+        position: relative;
+    }
 }
-.sf_logo{
-	width:$logoWidth;
-	height:$logoHeight;
-	position:absolute;
-	top:10px;
-	left:20px;
-	border-radius:50px;
-	border:1px solid $navbarBorderColor;
-	overflow:hidden;
-	z-index:99;
-	@media screen and (max-width: 480px){
-		width: $logoPhoneSize;
-		height: $logoPhoneSize;
-	}
-	img{
-		width: 100px;
-		height: auto;
-		display: block;
-		@media screen and (max-width: 480px){
-			width: $logoPhoneSize;
-			height: $logoPhoneSize;
-		}
-	}
+
+.sf_logo {
+    width: $logoWidth;
+    height: $logoHeight;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    border-radius: 50px;
+    border: 1px solid $navbarBorderColor;
+    overflow: hidden;
+    z-index: 99;
+
+    @media screen and (max-width: 480px) {
+        width: $logoPhoneSize;
+        height: $logoPhoneSize;
+    }
+
+    img {
+        width: 100px;
+        height: auto;
+        display: block;
+
+        @media screen and (max-width: 480px) {
+            width: $logoPhoneSize;
+            height: $logoPhoneSize;
+        }
+    }
 }
-.sf_nav{
-	width:auto;
-	height:$navbarHeight;
-	margin:0;
-	padding:0;
-	@media screen and (max-width: 480px){
-		height:$navbarPhoneHeight                  ;
-	}
-	li{
-		height: $navbarHeight;
-		line-height: $navbarHeight;
-		font-size: $navbarSize;
-		list-style: none;
-		float: left;
-		padding:0 25px;
-		color:$navbarDefaultColor;
-		position:relative;
-		cursor:pointer;
-		transition: all .2s ease;
-		a{
-			color: #333;
-			display: block;
-			&:active{
-				color: inherit;
-				text-decoration:none;
-			}
-			&:hover{
-				color: inherit;
-				text-decoration:none;
-			}
-			&:focus{
-				color: inherit;
-				text-decoration:none;
-			}
-			&:visited{
-				color: inherit;
-				text-decoration:none;
-			}
-		}
-		@media screen and (max-width: 480px){
-			height:$navbarPhoneHeight                  ;
-			line-height: $navbarPhoneHeight                  ;
-			padding:0 20px;
-		}
-		&.active{
-			color: $navActiveColor;
-		}
-		&:hover{
-			color:$navHoverBgColor;
-		}
-		&:before{
-			content: '/';
-			position:absolute;
-			left: 0;
-			color:$navbarDefaultColor;
-		}
-	}
-	&>li:first-child:before{
-		content:'';
-	}
+
+.sf_nav {
+    width: auto;
+    height: $navbarHeight;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (max-width: 480px) {
+        height: $navbarPhoneHeight;
+    }
+
+    li {
+        height: $navbarHeight;
+        line-height: $navbarHeight;
+        font-size: $navbarSize;
+        list-style: none;
+        float: left;
+        padding: 0 25px;
+        color: $navbarDefaultColor;
+        position: relative;
+        cursor: pointer;
+        transition: all .2s ease;
+
+        a {
+            color: #333;
+            display: block;
+
+            &:active {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            &:hover {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            &:focus {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            &:visited {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            height: $navbarPhoneHeight;
+            line-height: $navbarPhoneHeight;
+            padding: 0 20px;
+        }
+
+        &.active {
+            color: $navActiveColor;
+        }
+
+        &:hover {
+            color: $navHoverBgColor;
+        }
+
+        &:before {
+            content: '/';
+            position: absolute;
+            left: 0;
+            color: $navbarDefaultColor;
+        }
+    }
+
+    & > li:first-child:before {
+        content: '';
+    }
 }

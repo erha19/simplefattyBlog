@@ -1,48 +1,63 @@
 @import "compass";
 
-$bannerColor:#009688;
-$bannerBgColor:#fff;
-$bannerFont:'Orbitron', sans-serif;
-$bannerBorderColor:rgba(0,0,0,.13);
+$bannerColor: #009688;
+$bannerBgColor: #fff;
+$bannerFont: "Orbitron", sans-serif;
+$bannerBorderColor: rgba(0, 0, 0, 0.13);
+
 .sf_banner {
-  text-align: center;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding:60px 0;
-  margin-top: 50px;
-  font-family: $bannerFont;
-  color:$bannerColor;
-  background-color: $bannerBgColor;
-  box-shadow:1px 1px 1px $bannerBorderColor;
-  z-index: 10;
-  @media screen and (max-width: 480px){
-    padding:20px 0;
-  }
-  h1 {
-    font-size: 3em;
-    font-weight: normal;
-    
+    text-align: center;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 60px 0;
+    margin-top: 50px;
+    font-family: $bannerFont;
+    color: $bannerColor;
+    background-color: $bannerBgColor;
+    box-shadow: 1px 1px 1px $bannerBorderColor;
+    z-index: 10;
+
     @media screen and (max-width: 480px) {
-      font-size: 1.5em;
+        padding: 20px 0;
     }
-  }
+
+    h1 {
+        font-size: 3em;
+        font-weight: normal;
+
+        @media screen and (max-width: 480px) {
+            font-size: 1.5em;
+        }
+    }
 }
+
 .logo-tag {
-  font-size: 1.5em;
-  text-shadow: 0 0 30px rgba(0, 150, 136, 0.4);
+    font-size: 1.5em;
+    text-shadow: 0 0 30px rgba(0, 150, 136, 0.4);
 }
 
 .text-cursor {
-  opacity: 1;
-  animation: cursor-flash 1.6s infinite;
+    opacity: 1;
+    animation: cursor-flash 1.6s infinite;
 }
 
 @keyframes cursor-flash {
-    49% {opacity: 1;}
-    50% {opacity: 0;}
-    99% {opacity: 0;}
-    100% {opacity: 1;}
+    49% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

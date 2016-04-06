@@ -8,7 +8,8 @@ var gulp = require('gulp'),
         browserSyncSpa = require('browser-sync-spa'),
         gulpSequence = require('gulp-sequence');
 
-//watch list
+
+
 gulp.task('watch', ['inject', 'vendor'], function () {
     //监控index.html,和bower.json文件
     gulp.watch([path.join(config.paths.src, '/*.html'), 'bower.json', 'vendor.base.json', 'vendor.json'], ['inject']);
@@ -39,12 +40,12 @@ gulp.task('watch', ['inject', 'vendor'], function () {
 
 
 function browserSyncInit(baseDir, open, port) {
-    // Only needed for angular apps,angular 正确路由需要
+    
     var onProxyRes = function (proxyRes, req, res) {
-        // add custom header to request
-
-
-        // or log the req
+        // 重写set-cookie位置
+        if (proxyRes.headers['set-cookie']) {
+            proxyRes.headers['set-cookie'][0] = proxyRes.headers['set-cookie'][0].replace('/ripple-cf', '')
+        }
     }
     
     browserSync.use(browserSyncSpa({
@@ -59,6 +60,9 @@ function browserSyncInit(baseDir, open, port) {
             routes: {
                 "/bower_components": "bower_components"
             },
+            
+            //使用代理
+            
             middleware: [
                 proxyMiddleware(['/api'], {onProxyRes: onProxyRes, target: 'http://simplefatty.cn/', changeOrigin: true})
             ]
