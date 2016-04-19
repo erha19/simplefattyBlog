@@ -19,13 +19,15 @@
 
     function CommentCtroller($window,$scope){
 
-        var head= document.getElementsByTagName('head')[0],
+        var head = document.getElementsByTagName('head')[0],
 
-            script= document.createElement('script'),
+            script = document.createElement('script'),
 
             loadedScript=head.getElementsByTagName('script'),
 
             flag=false;
+
+            $scope.showComment=false;
 
         for(var i in loadedScript){
             if(loadedScript[i].src=='http://static.duoshuo.com/embed.js'){
@@ -36,9 +38,9 @@
         }
 
         if(!flag){
-            $window.duoshuoQuery = {short_name:"sfatty"};
+            window.duoshuoQuery = {short_name:"sfatty"};
 
-            $scope.showComment=false;
+            
             
             script.type= 'text/javascript'; 
             
@@ -52,7 +54,9 @@
             
             head.appendChild(script); 
         }
-        
+        else{
+                show();
+        }
 
         function show(){
             $scope.showComment=true;
