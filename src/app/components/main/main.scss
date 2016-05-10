@@ -98,18 +98,6 @@ $containerBorderColor: rgba(0, 0, 0, 0.1);
         cursor: pointer;
     }
 
-    span, i {
-        display: inline-block;
-        font-size: 16px;
-        font-style: normal;
-        padding-left: 20px;
-        background-repeat: no-repeat;
-        height: 14px;
-        margin: 5px;
-        opacity: 0;
-        transition: all .2s ease;
-    }
-
     p {
         line-height: 25px;
         color: #636262;
@@ -188,22 +176,25 @@ $containerBorderColor: rgba(0, 0, 0, 0.1);
                 border-width: 0;
             }
         }
-
-        .tag, .time {
+        
+    
+        .list-header {
             float: left;
             display: inline-block;
             font-size: 16px;
             font-style: normal;
-            padding-left: 20px;
-            background-repeat: no-repeat;
-            background-attachment: center;
+            padding-left: 0;
             height: 16px;
             line-height: 16px;
+            color: #333;
             margin: 5px;
-        }
-
-        .tag {
             margin-left: 0;
+            i{
+                margin-right: 5px;
+            }
+            span{
+                margin-right: 5px;
+            }
         }
     }
 }

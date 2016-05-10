@@ -15,8 +15,8 @@
                     <ul class="taglist clearfix">
                         <li data-ng-repeat="tag in tagList track by $index" ng-click='changeTag(tag._id)' data-ng-bind="::tag.name"></li>
                     </ul>
-                    <div class="tag icon-tag" data-ng-bind="::blog.tagName"></div>
-                    <div class="time icon-time" data-ng-bind="::blog.publish_time|dataFilter"></div>
+                    <div class="list-header"><i class="iconfont icon-biaoqian"></i><span data-ng-bind="::blog.tagName"></span></div>
+                    <div class="list-header"><i class="iconfont icon-time"></i><span data-ng-bind="::blog.publish_time|dataFilter"></span></div>
                 </div>
                 <p data-ng-bind="::blog.introduce"></p>
             </div>
