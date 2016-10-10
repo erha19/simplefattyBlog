@@ -64,11 +64,15 @@ gulp.task('html', ['inject', 'partials'], function() {
 		//js
 		.pipe($.useref())
 		.pipe(jsFilter)
+		.pipe($.if('*.js', $.rev()))
 		.pipe($.stripDebug())
 		.pipe($.uglify())
 		.pipe(jsFilter.restore)
 		//css 
 		.pipe(cssFilter)
+
+		//md5后缀
+		.pipe($.if('*.css', $.rev()))
 		.pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
 		.pipe($.autoprefixer({
 			browsers: ['last 20 versions'],
@@ -76,9 +80,6 @@ gulp.task('html', ['inject', 'partials'], function() {
 		}))
 		.pipe($.csso())
 		.pipe(cssFilter.restore)
-		//md5后缀
-		.pipe($.if('*.css', $.rev()))
-		.pipe($.if('*.js', $.rev()))
 		//替换md5后缀的文件名
 		.pipe($.revReplace())
 		//html处理
